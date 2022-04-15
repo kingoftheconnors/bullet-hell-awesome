@@ -21,7 +21,7 @@ func shoot(direction = default_direction):
 
 func shoot_at_player():
 	var player = get_tree().root.get_node("Level/Player")
-	var bullet = preload("res://Bullets/Bullet.tscn").instance()
+	var bullet = preload("res://Bullets/Flechette.tscn").instance()
 	bullet.direction = (player.global_position - global_position).normalized()
 	get_tree().root.get_node("Level").add_child(bullet)
 	bullet.global_position = self.global_position

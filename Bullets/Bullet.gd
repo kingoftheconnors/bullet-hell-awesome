@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2 = Vector2.RIGHT
-const SPEED = 70
+export(int) var SPEED = 70
 
 func _ready():
 	$DestructionTimer.start()
