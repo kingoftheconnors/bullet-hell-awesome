@@ -4,6 +4,7 @@ const SPEED = 120
 const THIN = 0.75
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
+var health = 3
 
 func _physics_process(delta):
 	var horizontal = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
@@ -21,3 +22,15 @@ func _physics_process(delta):
 		particleEmitter.direction = Vector2(-horizontal, -vertical)
 		particleEmitter.initial_velocity = 10
 	move_and_slide(Vector2(horizontal,vertical)*SPEED)
+
+onready var invincibilityAnimator = $AnimationTree
+export(bool) var invincible = false
+func damage() -> bool:
+	if !invincible:
+		health -= 1
+		invincibilityAnimator['parameters/playback'].travel("Invincible")
+		if health <= 0:
+			# TODO: Die
+			print("DEAD")
+		return true
+	return false
