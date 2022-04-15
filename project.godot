@@ -13,6 +13,16 @@ config_version=4
 config/name="bullet-hell-awesome"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=512
+window/size/height=300
+window/size/resizable=false
+window/size/test_width=1024
+window/size/test_height=600
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [physics]
 
 common/enable_pause_aware_picking=true
