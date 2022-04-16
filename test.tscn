@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/bhmap.tres" type="TileSet" id=2]
 [ext_resource path="res://shadesocoolsman.png" type="Texture" id=3]
 [ext_resource path="res://Shades.gd" type="Script" id=4]
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -115,7 +116,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "Sweep2"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -123,10 +124,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -94, 31 ), Vector2( 1, 85 ), Vector2( 97, -91 ) ]
+"values": [ Vector2( -94, 31 ), Vector2( 1, 85 ), Vector2( 1, 85 ), Vector2( 97, -91 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("BulletSpawner")
@@ -135,7 +136,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 2.5 ),
+"times": PoolRealArray( 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -143,6 +144,23 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "shoot_at_player"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("BulletStorm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
 } ]
 }
 
@@ -219,3 +237,5 @@ tree_root = SubResource( 6 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 7 )
+
+[node name="BulletStorm" parent="Shades" instance=ExtResource( 6 )]
