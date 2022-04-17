@@ -17,6 +17,12 @@ SPEED = 140
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 
+[node name="Shadow" type="Sprite" parent="Sprite"]
+modulate = Color( 0.635294, 0.635294, 0.635294, 1 )
+show_behind_parent = true
+position = Vector2( -6, 0 )
+texture = ExtResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
