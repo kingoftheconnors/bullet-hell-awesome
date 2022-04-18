@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const SPEED = 120
-const THIN = 0.75
+const THIN = 0.65
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 var health = 3
