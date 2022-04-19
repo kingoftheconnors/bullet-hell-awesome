@@ -140,6 +140,23 @@ tracks/2/keys = {
 "method": "shoot_at_player"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.7, 4.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_orbit"
+}, {
+"args": [  ],
+"method": "stop_orbit"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Sweep"
@@ -437,13 +454,13 @@ position = Vector2( 512, 300 )
 
 [node name="Stars" parent="." instance=ExtResource( 7 )]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." groups=["orbiter"] instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Shades" type="KinematicBody2D" parent="." groups=["Boss"]]
-position = Vector2( 2.00002, 81 )
+[node name="Shades" type="KinematicBody2D" parent="." groups=["boss"]]
+position = Vector2( 125, -98 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )

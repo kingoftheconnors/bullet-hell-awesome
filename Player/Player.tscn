@@ -102,7 +102,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["orbiter"]]
 script = ExtResource( 2 )
 invincible = true
 

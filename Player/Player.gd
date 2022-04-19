@@ -20,17 +20,15 @@ const TIME_BETWEEN_BULLETS = 0.15
 var timeSinceLastBullet : float = 0
 
 const MAX_ORBIT_DISTANCE = 75
-const ORBIT_TURNAROUND_TIME = 750
+const ORBIT_TURNAROUND_TIME = 550
 var orbitting_body : Node2D
 var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
 var orbitting_time_of_last_h_input : int = 0
 
-func start_orbit():
-	var nodes = get_tree().get_nodes_in_group("Boss")
-	if nodes.size() > 0:
-		orbitting_body = nodes[0]
-		movementMode = MOVEMENT_MODE.ORBIT
+func start_orbit(orbiter):
+	orbitting_body = orbiter
+	movementMode = MOVEMENT_MODE.ORBIT
 func stop_orbit():
 	movementMode = MOVEMENT_MODE.REGULAR
 
@@ -73,7 +71,6 @@ func _physics_process(delta):
 		# If time is close enough to previous key-release, use old keys to decide direction
 		if OS.get_ticks_msec() - orbitting_time_of_last_h_input > ORBIT_TURNAROUND_TIME:
 			if this_horizontal != 0:
-				print("Setting new direction")
 				# If player wants to go right BELOW orbit object, go counterclockwise
 				if (self.global_position.y > orbitting_body.global_position.y):
 					orbitting_cur_direction = 1
