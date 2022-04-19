@@ -4,7 +4,10 @@ const SPEED = 120
 const THIN = 0.65
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
-var health = 3
+onready var asteroids = $Asteroids
+const NUM_ASTEROIDS = 2
+const HEAL_TIME_AFTER_DAMAGE = 5
+const HEAL_TIME_AFTER_FIRST_HEAL = 2
 
 var shooting : bool = false
 const TIME_BETWEEN_BULLETS = 0.15
@@ -40,9 +43,10 @@ onready var invincibilityAnimator = $AnimationTree
 export(bool) var invincible = false
 func damage() -> bool:
 	if !invincible:
-		health -= 1
+		asteroids.remove_asteroid()
 		invincibilityAnimator['parameters/playback'].travel("Invincible")
-		if health <= 0:
+		$HealTimer.start(HEAL_TIME_AFTER_DAMAGE)
+		if asteroids.get_num_asteroids() == 0:
 			# TODO: Die
 			print("DEAD")
 		return true
@@ -55,3 +59,12 @@ func _input(event):
 		else:
 			shooting = false
 			timeSinceLastBullet = 0
+
+func _on_HealTimer_timeout():
+	if asteroids.get_num_asteroids() < NUM_ASTEROIDS:
+		asteroids.add_asteroid()
+		$HealTimer.start(HEAL_TIME_AFTER_FIRST_HEAL)
+
+func _ready():
+	for i in range(NUM_ASTEROIDS):
+		asteroids.add_asteroid()
