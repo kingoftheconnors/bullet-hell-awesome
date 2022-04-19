@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-e0de26b393baa489289b0e229c9561a8.stex"
+path="res://.import/Mercury.png-7a8dd526421edcbc34026228dc908e03.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/player.png"
-dest_files=[ "res://.import/player.png-e0de26b393baa489289b0e229c9561a8.stex" ]
+source_file="res://Boss/Mercury.png"
+dest_files=[ "res://.import/Mercury.png-7a8dd526421edcbc34026228dc908e03.stex" ]
 
 [params]
 
