@@ -6,8 +6,8 @@ onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 onready var asteroids = $Asteroids
 const NUM_ASTEROIDS = 2
-const HEAL_TIME_AFTER_DAMAGE = 5
-const HEAL_TIME_AFTER_FIRST_HEAL = 2
+const HEAL_TIME_AFTER_DAMAGE = 9
+const HEAL_TIME_AFTER_FIRST_HEAL = 4
 
 var shooting : bool = false
 const TIME_BETWEEN_BULLETS = 0.15
