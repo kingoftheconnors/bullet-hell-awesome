@@ -14,5 +14,5 @@ func stop_orbit():
 	target = null
 
 func _physics_process(delta):
-	if target != null:
+	if target != null and is_instance_valid(target):
 		self.global_position = target.global_position
