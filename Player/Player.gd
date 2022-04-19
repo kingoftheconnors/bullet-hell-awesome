@@ -20,9 +20,11 @@ const TIME_BETWEEN_BULLETS = 0.15
 var timeSinceLastBullet : float = 0
 
 const MAX_ORBIT_DISTANCE = 75
+const ORBIT_TURNAROUND_TIME = 750
 var orbitting_body : Node2D
-var orbitting_previous_horizontal : float = 0
+var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
+var orbitting_time_of_last_h_input : int = 0
 
 func start_orbit():
 	var nodes = get_tree().get_nodes_in_group("Boss")
@@ -61,17 +63,26 @@ func _physics_process(delta):
 		move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * Input.get_action_strength("ui_down"))
 		if self.position.distance_to(orbitting_body.position) < MAX_ORBIT_DISTANCE:
 			move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * -Input.get_action_strength("ui_up"))
+		else:
+			# Force move towards planet
+			move_and_slide((orbitting_body.position - self.position).normalized() * SPEED)
 		# Moving along orbit
 		var current_angle = self.global_position.angle_to_point(orbitting_body.global_position)
 		# Player left/right
 		var this_horizontal = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
-		if abs(orbitting_previous_horizontal - this_horizontal) > 0.1:
-			# If player wants to go right BELOW orbit object, go counterclockwise
-			if (self.global_position.y > orbitting_body.global_position.y):
-				orbitting_input_strength = this_horizontal
-			else:
-				orbitting_input_strength = -this_horizontal
-			orbitting_previous_horizontal = this_horizontal
+		# If time is close enough to previous key-release, use old keys to decide direction
+		if OS.get_ticks_msec() - orbitting_time_of_last_h_input > ORBIT_TURNAROUND_TIME:
+			if this_horizontal != 0:
+				print("Setting new direction")
+				# If player wants to go right BELOW orbit object, go counterclockwise
+				if (self.global_position.y > orbitting_body.global_position.y):
+					orbitting_cur_direction = 1
+				else:
+					orbitting_cur_direction = -1
+		# Set orbitting_time_of_last_h_input
+		if this_horizontal != 0:
+			orbitting_time_of_last_h_input = OS.get_ticks_msec() 
+		orbitting_input_strength = orbitting_cur_direction * this_horizontal
 		horizontal = sin(current_angle) * orbitting_input_strength
 		vertical = -cos(current_angle) * orbitting_input_strength
 	
@@ -107,4 +118,3 @@ func _on_HealTimer_timeout():
 func _ready():
 	for i in range(NUM_ASTEROIDS):
 		asteroids.add_asteroid()
-	start_orbit()
