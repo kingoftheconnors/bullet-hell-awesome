@@ -100,7 +100,8 @@ anims/Blast = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 270, 0 )
 shape = SubResource( 3 )
 disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
