@@ -9,6 +9,7 @@ export(MOVEMENT_MODE) var movementMode = MOVEMENT_MODE.REGULAR
 const SPEED = 120
 const THIN = 0.65
 onready var sprite = $Sprite
+onready var orbitDirector = $OrbitDirections
 onready var particleEmitter = $Particles2D
 onready var asteroids = $Asteroids
 const NUM_ASTEROIDS = 2
@@ -71,16 +72,20 @@ func _physics_process(delta):
 				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED)
 			# Moving along orbit
 			var current_angle = self.global_position.angle_to_point(orbitting_body.global_position)
+			orbitDirector.rotation = current_angle + PI/2
 			# Player left/right
 			var this_horizontal = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
 			# If time is close enough to previous key-release, use old keys to decide direction
 			if OS.get_ticks_msec() - orbitting_time_of_last_h_input > ORBIT_TURNAROUND_TIME:
+				orbitDirector.visible = true
 				if this_horizontal != 0:
 					# If player wants to go right BELOW orbit object, go counterclockwise
 					if (self.global_position.y > orbitting_body.global_position.y):
 						orbitting_cur_direction = 1
 					else:
 						orbitting_cur_direction = -1
+			else:
+				orbitDirector.visible = false
 			# Set orbitting_time_of_last_h_input
 			if this_horizontal != 0:
 				orbitting_time_of_last_h_input = OS.get_ticks_msec() 
