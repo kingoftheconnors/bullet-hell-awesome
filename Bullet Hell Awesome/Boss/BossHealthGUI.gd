@@ -1,6 +1,6 @@
 extends Node
 
-onready var container : Control = get_node("MarginContainer/HBoxContainer")
+onready var container : Control = get_node("MarginContainer")
 onready var progress : TextureProgress = get_node("MarginContainer/HBoxContainer/TextureProgress")
 onready var label : Label = get_node("MarginContainer/HBoxContainer/Label")
 

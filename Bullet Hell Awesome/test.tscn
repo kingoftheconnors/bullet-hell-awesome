@@ -1,11 +1,12 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/bhmap.tres" type="TileSet" id=2]
-[ext_resource path="res://shadesocoolsman.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Boss/Mercury.png" type="Texture" id=3]
 [ext_resource path="res://Shades.gd" type="Script" id=4]
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Stars.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -27,7 +28,7 @@ tracks/0/keys = {
 "values": [ Vector2( 125, -98 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "Scatter"
 length = 5.0
 tracks/0/type = "value"
@@ -78,9 +79,9 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 resource_name = "Storm"
-length = 6.0
+length = 8.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -88,10 +89,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 3,
+"values": [ Vector2( -96, -96 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("BulletStorm")
@@ -100,7 +101,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 6 ),
+"times": PoolRealArray( 4, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -117,15 +118,9 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 4, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
@@ -139,9 +134,25 @@ tracks/2/keys = {
 "method": "shoot_at_player"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.5, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_orbit"
+}, {
+"args": [  ],
+"method": "stop_orbit"
+} ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "Sweep"
+[sub_resource type="Animation" id=6]
 length = 5.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -239,8 +250,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "TrackingTriangle"
+[sub_resource type="Animation" id=7]
 length = 6.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -264,8 +274,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -279,8 +289,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -294,8 +304,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -309,8 +319,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -324,8 +334,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -339,8 +349,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -354,8 +364,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -369,8 +379,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -384,24 +394,28 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 } ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Scatter"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Storm"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Sweep"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "TrackingTriangle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 switch_mode = 2
 auto_advance = true
 
@@ -409,47 +423,42 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=10]
-states/Scatter/node = SubResource( 16 )
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Scatter/node = SubResource( 8 )
 states/Scatter/position = Vector2( 226, 175 )
-states/Storm/node = SubResource( 13 )
+states/Storm/node = SubResource( 9 )
 states/Storm/position = Vector2( 451, 199 )
-states/Sweep/node = SubResource( 6 )
+states/Sweep/node = SubResource( 10 )
 states/Sweep/position = Vector2( 208, 76 )
-states/TrackingTriangle/node = SubResource( 7 )
+states/TrackingTriangle/node = SubResource( 11 )
 states/TrackingTriangle/position = Vector2( 459, 76 )
-transitions = [ "Sweep", "TrackingTriangle", SubResource( 8 ), "TrackingTriangle", "Storm", SubResource( 14 ), "Storm", "Scatter", SubResource( 17 ), "Scatter", "Sweep", SubResource( 18 ) ]
+transitions = [ "Sweep", "TrackingTriangle", SubResource( 12 ), "TrackingTriangle", "Storm", SubResource( 13 ), "Storm", "Scatter", SubResource( 14 ), "Scatter", "Sweep", SubResource( 15 ) ]
 start_node = "Sweep"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 512, 300 )
 
+[node name="Stars" parent="." instance=ExtResource( 7 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 invincible = false
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 8, 8 )
-format = 1
-tile_data = PoolIntArray( -851982, 0, 4, -851981, 0, 2, -851980, 0, 2, -851979, 0, 2, -851978, 0, 2, -851977, 0, 2, -851976, 0, 2, -851975, 0, 2, -851974, 0, 2, -851973, 0, 2, -851972, 0, 2, -851971, 0, 2, -851970, 0, 2, -851969, 0, 2, -917504, 0, 2, -917503, 0, 2, -917502, 0, 2, -917501, 0, 2, -917500, 0, 2, -917499, 0, 2, -917498, 0, 2, -917497, 0, 2, -917496, 0, 2, -917495, 0, 2, -917494, 0, 2, -917493, 0, 2, -917492, 0, 2, -917491, 0, 5, -786446, 0, 131072, -851955, 0, 131072, -720910, 0, 131072, -786419, 0, 131072, -655374, 0, 131072, -720883, 0, 131072, -589838, 0, 131072, -655347, 0, 131072, -524302, 0, 131072, -589811, 0, 131072, -458766, 0, 131072, -524275, 0, 131072, -393230, 0, 131072, -458739, 0, 131072, -327694, 0, 131072, -393203, 0, 131072, -262158, 0, 131072, -327667, 0, 131072, -196622, 0, 131072, -262131, 0, 131072, -131086, 0, 131072, -196595, 0, 131072, -65550, 0, 131072, -131059, 0, 131072, -14, 0, 131072, -65523, 0, 131072, 65522, 0, 131072, 13, 0, 131072, 131058, 0, 131072, 65549, 0, 131072, 196594, 0, 131072, 131085, 0, 131072, 262130, 0, 131072, 196621, 0, 131072, 327666, 0, 131072, 262157, 0, 131072, 393202, 0, 131072, 327693, 0, 131072, 458738, 0, 131072, 393229, 0, 131072, 524274, 0, 131072, 458765, 0, 131072, 589810, 0, 131072, 524301, 0, 131072, 655346, 0, 131072, 589837, 0, 131072, 720882, 0, 131072, 655373, 0, 131072, 786418, 0, 131072, 720909, 0, 131072, 851954, 0, 131072, 786445, 0, 131072, 917490, 0, 65540, 917491, 0, 2, 917492, 0, 2, 917493, 0, 2, 917494, 0, 2, 917495, 0, 2, 917496, 0, 2, 917497, 0, 2, 917498, 0, 2, 917499, 0, 2, 917500, 0, 2, 917501, 0, 2, 917502, 0, 2, 917503, 0, 2, 851968, 0, 2, 851969, 0, 2, 851970, 0, 2, 851971, 0, 2, 851972, 0, 2, 851973, 0, 2, 851974, 0, 2, 851975, 0, 2, 851976, 0, 2, 851977, 0, 2, 851978, 0, 2, 851979, 0, 2, 851980, 0, 2, 851981, 0, 65541 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Shades" type="KinematicBody2D" parent="."]
+[node name="Shades" type="KinematicBody2D" parent="." groups=[
+"boss",
+]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
+bossName = "Mercury"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shades"]
 scale = Vector2( 0.3, 0.3 )
@@ -469,19 +478,29 @@ color_ramp = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shades"]
 anims/RESET = SubResource( 3 )
-anims/Scatter = SubResource( 15 )
-anims/Storm = SubResource( 12 )
-anims/Sweep = SubResource( 4 )
-anims/TrackingTriangle = SubResource( 5 )
+anims/Scatter = SubResource( 4 )
+anims/Storm = SubResource( 5 )
+anims/Sweep = SubResource( 6 )
+anims/TrackingTriangle = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Shades"]
-tree_root = SubResource( 10 )
+tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 11 )
+parameters/playback = SubResource( 17 )
 
 [node name="BulletSpawner" parent="Shades" instance=ExtResource( 5 )]
 bulletsPerSecond = 0.0
 
 [node name="BulletStorm" parent="Shades" instance=ExtResource( 6 )]
 rotate_speed = 200
+
+[node name="Arena" parent="." instance=ExtResource( 2 )]
+margin_left = -110.0
+margin_top = -110.0
+margin_right = 110.0
+margin_bottom = 110.0
+left = -110.0
+top = -110.0
+right = 110.0
+bottom = 110.0

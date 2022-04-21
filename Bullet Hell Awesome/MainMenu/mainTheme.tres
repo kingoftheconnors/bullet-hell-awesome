@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://font/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://MainMenu/Focus.png" type="Texture" id=2]
+[ext_resource path="res://MainMenu/ButtonBox.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 1.18519
+margin_right = 1.0535
+margin_top = 1.31687
+margin_bottom = 1.18519
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 1.84362
+margin_right = 1.97531
+margin_top = 2.50206
+margin_bottom = 1.97531
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 1.58025
+margin_right = 1.44856
+margin_top = 1.58025
+margin_bottom = 1.58025
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 4 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )

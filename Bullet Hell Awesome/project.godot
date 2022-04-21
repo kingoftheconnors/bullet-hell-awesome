@@ -16,12 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="bullet-hell-awesome"
-run/main_scene="res://test.tscn"
+run/main_scene="res://MainMenu/MainMenu.tscn"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
 BossHealthGui="*res://Boss/BossHealthGUI.tscn"
+DeathScreenGui="*res://Player/DeathScreenGui.tscn"
 
 [display]
 
@@ -70,4 +72,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

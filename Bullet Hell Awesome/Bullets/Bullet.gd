@@ -3,7 +3,9 @@ extends Area2D
 var direction : Vector2 = Vector2.RIGHT
 export(int) var SPEED = 70
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
+	rotation = direction.angle()
 	$DestructionTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -40,3 +40,31 @@ func shoot_v_at_player(num_shots : int):
 			bullet.direction = Vector2(cos(angle), sin(angle))
 		get_tree().root.get_node("Level").add_child(bullet)
 		bullet.global_position = self.global_position
+
+func shoot_laser_beam_at_player():
+	var player = get_tree().root.get_node("Level/Player")
+	var laser = preload("res://Bullets/Laser.tscn").instance()
+	laser.direction = (player.global_position - global_position).normalized()
+	add_child(laser)
+	laser.shoot(true)
+# direction is a paramater that can be passed in, but if it isn't, it'll
+# use the default_direction variable
+func shoot_laser_beam(direction : Vector2 = default_direction):
+	var laser = preload("res://Bullets/Laser.tscn").instance()
+	laser.direction = direction
+	add_child(laser)
+	laser.shoot(true)
+func shoot_horizontal_beam_at_player():
+	var player = get_tree().root.get_node("Level/Player")
+	var laser = preload("res://Bullets/Laser.tscn").instance()
+	laser.direction = Vector2.RIGHT
+	get_tree().root.get_node("Level").add_child(laser)
+	laser.position = Vector2(-ProjectSettings.get_setting("display/window/size/width")/2,player.position.y)
+	laser.shoot(true)
+func shoot_vertical_beam_at_player():
+	var player = get_tree().root.get_node("Level/Player")
+	var laser = preload("res://Bullets/Laser.tscn").instance()
+	laser.direction = Vector2.DOWN
+	get_tree().root.get_node("Level").add_child(laser)
+	laser.position = Vector2(player.position.x,-ProjectSettings.get_setting("display/window/size/height")/2)
+	laser.shoot(true)

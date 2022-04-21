@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://font/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://MainMenu/StartGame.gd" type="Script" id=3]
+[ext_resource path="res://MainMenu/mainTheme.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 64.0
+margin_right = 448.0
+margin_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 384.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 1 )
+text = "INSERT GAME NAME"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+margin_top = 118.0
+margin_right = 384.0
+margin_bottom = 182.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 384.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 0, 24 )
+theme = ExtResource( 4 )
+text = "Press to Start"
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/VBoxContainer/Button"]
+anims/FadeToBlack = SubResource( 2 )
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="HBoxContainer/VBoxContainer/Button" method="_on_Button_pressed"]
