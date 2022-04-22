@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stars.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Textbox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -25,10 +26,58 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 125, -98 ) ]
+"values": [ Vector2( 0, -98 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Arena:top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -170.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Arena:bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 170.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Arena:left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -270.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Arena:right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "Scatter"
 length = 5.0
 tracks/0/type = "value"
@@ -79,9 +128,9 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 resource_name = "Storm"
-length = 6.0
+length = 8.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -101,7 +150,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 6 ),
+"times": PoolRealArray( 4, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -118,15 +167,9 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 4, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
@@ -147,7 +190,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.7, 4.8 ),
+"times": PoolRealArray( 1.5, 8.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -158,8 +201,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Sweep"
+[sub_resource type="Animation" id=6]
 length = 5.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -257,8 +299,133 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "TrackingTriangle"
+[sub_resource type="Animation" id=18]
+resource_name = "Sweep (start)"
+length = 5.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.6, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.52588e-05, -96 ), Vector2( -96, -96 ), Vector2( 96, -96 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("BulletSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ null ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 1, 0 ) ],
+"method": "shoot"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Arena:top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ -170.0, -110.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Arena:bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 170.0, 110.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Arena:left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ -270.0, -110.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Arena:right")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 270.0, 110.0 ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 6.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -282,8 +449,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -297,8 +464,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -312,8 +479,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -327,8 +494,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -342,8 +509,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -357,8 +524,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -372,8 +539,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -387,8 +554,8 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 }, {
 "args": [  ],
 "method": "shoot_at_player"
@@ -402,24 +569,31 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot_at_player"
 }, {
-"args": [  ],
-"method": "shoot_at_player"
+"args": [ 5 ],
+"method": "shoot_v_at_player"
 } ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Scatter"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Storm"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Sweep (start)"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Sweep"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "TrackingTriangle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 switch_mode = 2
 auto_advance = true
 
@@ -427,27 +601,30 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=10]
-states/Scatter/node = SubResource( 16 )
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Scatter/node = SubResource( 8 )
 states/Scatter/position = Vector2( 226, 175 )
-states/Storm/node = SubResource( 13 )
+states/Storm/node = SubResource( 9 )
 states/Storm/position = Vector2( 451, 199 )
-states/Sweep/node = SubResource( 6 )
+states/Sweep/node = SubResource( 10 )
 states/Sweep/position = Vector2( 208, 76 )
-states/TrackingTriangle/node = SubResource( 7 )
+"states/Sweep (start)/node" = SubResource( 19 )
+"states/Sweep (start)/position" = Vector2( 459, -23 )
+states/TrackingTriangle/node = SubResource( 11 )
 states/TrackingTriangle/position = Vector2( 459, 76 )
-transitions = [ "Sweep", "TrackingTriangle", SubResource( 8 ), "TrackingTriangle", "Storm", SubResource( 14 ), "Storm", "Scatter", SubResource( 17 ), "Scatter", "Sweep", SubResource( 18 ) ]
-start_node = "Sweep"
+transitions = [ "Sweep", "TrackingTriangle", SubResource( 12 ), "TrackingTriangle", "Storm", SubResource( 13 ), "Storm", "Scatter", SubResource( 14 ), "Scatter", "Sweep", SubResource( 15 ), "Sweep (start)", "TrackingTriangle", SubResource( 20 ) ]
+start_node = "Sweep (start)"
+graph_offset = Vector2( -63.1544, 39.8287 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 512, 300 )
@@ -460,11 +637,12 @@ position = Vector2( 512, 300 )
 current = true
 
 [node name="Shades" type="KinematicBody2D" parent="." groups=["boss"]]
-position = Vector2( 125, -98 )
+position = Vector2( 0, -98 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
-bossName = "Mercury"
+health = 90
+bossName = "Terra"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shades"]
 scale = Vector2( 0.3, 0.3 )
@@ -484,16 +662,16 @@ color_ramp = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shades"]
 anims/RESET = SubResource( 3 )
-anims/Scatter = SubResource( 15 )
-anims/Storm = SubResource( 12 )
-anims/Sweep = SubResource( 4 )
-anims/TrackingTriangle = SubResource( 5 )
+anims/Scatter = SubResource( 4 )
+anims/Storm = SubResource( 5 )
+anims/Sweep = SubResource( 6 )
+"anims/Sweep (start)" = SubResource( 18 )
+anims/TrackingTriangle = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Shades"]
-tree_root = SubResource( 10 )
+tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 11 )
+parameters/playback = SubResource( 17 )
 
 [node name="BulletSpawner" parent="Shades" instance=ExtResource( 5 )]
 bulletsPerSecond = 0.0
@@ -502,11 +680,88 @@ bulletsPerSecond = 0.0
 rotate_speed = 200
 
 [node name="Arena" parent="." instance=ExtResource( 2 )]
-margin_left = -110.0
-margin_top = -110.0
-margin_right = 110.0
-margin_bottom = 110.0
-left = -110.0
-top = -110.0
-right = 110.0
-bottom = 110.0
+margin_left = -270.0
+margin_top = -170.0
+margin_right = 270.0
+margin_bottom = 170.0
+left = -270.0
+top = -170.0
+right = 270.0
+bottom = 170.0
+
+[node name="1 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 57.0
+first_box = true
+text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
+nextBox = NodePath("../2 Orcus")
+
+[node name="2 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 57.0
+text = "I had hoped you would be better prepared."
+nextBox = NodePath("../3 Terra")
+
+[node name="3 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = -80.0
+margin_right = 150.0
+margin_bottom = -63.0
+text = "Nonsense, Orcus."
+color = "green"
+nextBox = NodePath("../4 Terra")
+
+[node name="4 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = -80.0
+margin_right = 150.0
+margin_bottom = -63.0
+text = "Did you believe Jupiter would let you take the souls of myself and the humans, dragging us screaming into the abyss?"
+color = "green"
+nextBox = NodePath("../5 Orcus")
+
+[node name="5 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 57.0
+text = "And where is he to stop me from expanding my domain, as was my birthright?"
+nextBox = NodePath("../6 Orcus")
+
+[node name="6 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 57.0
+text = "Does he, too, fear the inevitable?"
+nextBox = NodePath("../7 Terra")
+
+[node name="7 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = -80.0
+margin_right = 150.0
+margin_bottom = -63.0
+text = "Jupiter fears nothing."
+color = "green"
+nextBox = NodePath("../8 Orcus")
+
+[node name="8 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 57.0
+text = "Do you? Because he does not seem to be arriving any time soon."
+nextBox = NodePath("../9 Terra")
+
+[node name="9 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -150.0
+margin_top = -80.0
+margin_right = 150.0
+margin_bottom = -63.0
+text = "[shake]Enough! You will not claim another life![/shake]"
+color = "green"
+nextBox = NodePath("../Shades")
