@@ -28,6 +28,11 @@ var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
 var orbitting_time_of_last_h_input : int = 0
 
+export(bool) var is_active = false
+
+func start():
+	is_active = true
+
 func start_orbit(orbiter):
 	orbitting_body = orbiter
 	movementMode = MOVEMENT_MODE.ORBIT
@@ -51,9 +56,10 @@ func damage() -> bool:
 	return false
 
 func _physics_process(delta):
-	if !dead:
+	if !dead and is_active:
 		var horizontal : float; var vertical : float
 		if movementMode == MOVEMENT_MODE.REGULAR:
+			orbitDirector.visible = false
 			horizontal = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
 			vertical = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"))
 			if abs(horizontal) > abs(vertical):
@@ -63,6 +69,8 @@ func _physics_process(delta):
 			else:
 				sprite.scale = Vector2(lerp(sprite.scale.x, 1, .1), lerp(sprite.scale.y, 1, .1))
 		elif movementMode == MOVEMENT_MODE.ORBIT:
+			if not is_instance_valid(orbitting_body):
+				return
 			# Moving towards or away from planet
 			move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * Input.get_action_strength("ui_down"))
 			if self.position.distance_to(orbitting_body.position) < MAX_ORBIT_DISTANCE:

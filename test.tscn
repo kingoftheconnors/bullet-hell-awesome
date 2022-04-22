@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stars.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Textbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Music/Bullet Hell demo2.wav" type="AudioStream" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -696,7 +697,7 @@ margin_right = 150.0
 margin_bottom = 57.0
 first_box = true
 text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
-nextBox = NodePath("../2 Orcus")
+nextBox = [ NodePath("../2 Orcus") ]
 
 [node name="2 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -704,7 +705,7 @@ margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 57.0
 text = "I had hoped you would be better prepared."
-nextBox = NodePath("../3 Terra")
+nextBox = [ NodePath("../3 Terra") ]
 
 [node name="3 Terra" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -713,7 +714,7 @@ margin_right = 150.0
 margin_bottom = -63.0
 text = "Nonsense, Orcus."
 color = "green"
-nextBox = NodePath("../4 Terra")
+nextBox = [ NodePath("../4 Terra") ]
 
 [node name="4 Terra" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -722,7 +723,7 @@ margin_right = 150.0
 margin_bottom = -63.0
 text = "Did you believe Jupiter would let you take the souls of myself and the humans, dragging us screaming into the abyss?"
 color = "green"
-nextBox = NodePath("../5 Orcus")
+nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -730,7 +731,7 @@ margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 57.0
 text = "And where is he to stop me from expanding my domain, as was my birthright?"
-nextBox = NodePath("../6 Orcus")
+nextBox = [ NodePath("../6 Orcus") ]
 
 [node name="6 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -738,7 +739,7 @@ margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 57.0
 text = "Does he, too, fear the inevitable?"
-nextBox = NodePath("../7 Terra")
+nextBox = [ NodePath("../7 Terra") ]
 
 [node name="7 Terra" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -747,7 +748,7 @@ margin_right = 150.0
 margin_bottom = -63.0
 text = "Jupiter fears nothing."
 color = "green"
-nextBox = NodePath("../8 Orcus")
+nextBox = [ NodePath("../8 Orcus") ]
 
 [node name="8 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -755,7 +756,7 @@ margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 57.0
 text = "Do you? Because he does not seem to be arriving any time soon."
-nextBox = NodePath("../9 Terra")
+nextBox = [ NodePath("../9 Terra") ]
 
 [node name="9 Terra" parent="." instance=ExtResource( 8 )]
 margin_left = -150.0
@@ -764,4 +765,8 @@ margin_right = 150.0
 margin_bottom = -63.0
 text = "[shake]Enough! You will not claim another life![/shake]"
 color = "green"
-nextBox = NodePath("../Shades")
+nextBox = [ NodePath("../Shades"), NodePath("../Player") ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true

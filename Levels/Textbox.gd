@@ -3,7 +3,7 @@ extends HBoxContainer
 export(bool) var first_box = false
 export(String) var text = "Hello there"
 export(String) var color = "red"
-export(NodePath) var nextBox
+export(Array, NodePath) var nextBox
 var active = false
 
 onready var animator = $VBoxContainer/AnimationPlayer
@@ -26,8 +26,8 @@ func _input(event):
 				animator.advance(animator.current_animation_length - animator.current_animation_position)
 			else:
 				emit_signal("next_box")
-				if not nextBox.is_empty():
-					get_node(nextBox).start()
+				for i in nextBox:
+					get_node(i).start()
 				queue_free()
 
 signal next_box

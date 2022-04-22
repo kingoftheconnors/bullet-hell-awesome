@@ -26,10 +26,10 @@ func resize():
 	rect_size = Vector2(width, height)
 	rect_position = Vector2(left, top)
 	# Move collision shapes
-	leftCollider.position = Vector2(4, height/2)
-	rightCollider.position = Vector2(width-4, height/2)
-	topCollider.position = Vector2(width/2, 4)
-	bottomCollider.position = Vector2(width/2, height-4)
+	leftCollider.position = Vector2(-8, height/2)
+	rightCollider.position = Vector2(width+8, height/2)
+	topCollider.position = Vector2(width/2, -8)
+	bottomCollider.position = Vector2(width/2, height+8)
 	# Resize collision shapes
-	leftCollider.shape.extents = Vector2(4, height/2)
-	topCollider.shape.extents = Vector2(width/2, 4)
+	leftCollider.shape.extents = Vector2(16, height/2)
+	topCollider.shape.extents = Vector2(width/2, 16)

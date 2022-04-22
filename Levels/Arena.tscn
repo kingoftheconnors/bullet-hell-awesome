@@ -4,10 +4,10 @@
 [ext_resource path="res://Arena.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 110 )
+extents = Vector2( 16, 170 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 110, 4 )
+extents = Vector2( 270, 16 )
 
 [node name="Arena" type="NinePatchRect"]
 margin_left = -20.0
@@ -25,17 +25,17 @@ script = ExtResource( 2 )
 [node name="Colliders" type="StaticBody2D" parent="."]
 
 [node name="Left" type="CollisionShape2D" parent="Colliders"]
-position = Vector2( 4, 20 )
+position = Vector2( -8, 20 )
 shape = SubResource( 1 )
 
 [node name="Right" type="CollisionShape2D" parent="Colliders"]
-position = Vector2( 36, 20 )
+position = Vector2( 48, 20 )
 shape = SubResource( 1 )
 
 [node name="Top" type="CollisionShape2D" parent="Colliders"]
-position = Vector2( 20, 4 )
+position = Vector2( 20, -8 )
 shape = SubResource( 2 )
 
 [node name="Bottom" type="CollisionShape2D" parent="Colliders"]
-position = Vector2( 20, 36 )
+position = Vector2( 20, 48 )
 shape = SubResource( 2 )
