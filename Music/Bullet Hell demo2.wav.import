@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bullet Hell demo2.wav-743f34fb07b8ea82fe2d4f55e7573adf.sample"
+
+[deps]
+
+source_file="res://Music/Bullet Hell demo2.wav"
+dest_files=[ "res://.import/Bullet Hell demo2.wav-743f34fb07b8ea82fe2d4f55e7573adf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
