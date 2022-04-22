@@ -24,7 +24,7 @@ func add_asteroid():
 	reset_asteroid_rotations()
 func remove_asteroid() -> int:
 	if get_num_asteroids() > 0:
-		remove_child(get_child(0))
+		get_child(0).destroy()
 		reset_asteroid_rotations()
 	return get_num_asteroids()
 func get_num_asteroids() -> int:
