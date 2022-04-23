@@ -7,7 +7,7 @@ enum MOVEMENT_MODE {
 }
 export(MOVEMENT_MODE) var movementMode = MOVEMENT_MODE.ORBIT
 
-var speed = 180
+export(int) var speed = 180
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 const HEAL_TIME_AFTER_DAMAGE = 3

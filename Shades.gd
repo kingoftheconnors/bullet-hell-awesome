@@ -4,6 +4,7 @@ const SPEED = 120
 const THIN = 0.75
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
+export(int, 0, 100) var orbit_radius = 95
 export(int, 0, 500) var health = 50
 export(String) var bossName = "Boss Name"
 export(NodePath) var deathText

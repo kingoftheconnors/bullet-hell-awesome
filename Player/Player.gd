@@ -20,7 +20,6 @@ var shooting : bool = false
 const TIME_BETWEEN_BULLETS = 0.15
 var timeSinceLastBullet : float = 0
 
-const MAX_ORBIT_DISTANCE = 95
 const ORBIT_TURNAROUND_TIME = 550
 var orbitting_body : Node2D
 var orbitting_cur_direction : int = 1
@@ -74,7 +73,7 @@ func _physics_process(delta):
 				return
 			# Moving towards or away from planet
 			move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * Input.get_action_strength("ui_down"))
-			if self.position.distance_to(orbitting_body.position) < MAX_ORBIT_DISTANCE:
+			if self.position.distance_to(orbitting_body.position) < orbitting_body.orbit_radius:
 				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * -Input.get_action_strength("ui_up"))
 			else:
 				# Force move towards planet
