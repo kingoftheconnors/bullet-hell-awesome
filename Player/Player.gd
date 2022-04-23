@@ -109,8 +109,9 @@ func _physics_process(delta):
 			timeSinceLastBullet += delta
 			if timeSinceLastBullet > TIME_BETWEEN_BULLETS:
 				var bullet = preload("res://Bullets/PlayerBullet.tscn").instance()
-				bullet.direction = (get_global_mouse_position() - self.global_position).normalized()
-				get_tree().root.add_child(bullet)
+				var mouse_position = get_global_mouse_position() - Vector2(ProjectSettings.get_setting("display/window/size/width"),ProjectSettings.get_setting("display/window/size/height"))/2
+				bullet.direction = (mouse_position - self.global_position).normalized()
+				get_parent().add_child(bullet)
 				bullet.global_position = self.global_position
 				timeSinceLastBullet = 0
 

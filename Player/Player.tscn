@@ -107,7 +107,7 @@ tracks/0/keys = {
 offsets = PoolRealArray( 0.612613, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[node name="Player" type="KinematicBody2D" groups=["orbiter"]]
+[node name="Player" type="KinematicBody2D" groups=["orbiter", "player"]]
 script = ExtResource( 2 )
 invincible = true
 

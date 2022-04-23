@@ -6,6 +6,7 @@ onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 export(int, 0, 500) var health = 50
 export(String) var bossName = "Boss Name"
+export(NodePath) var deathText
 var dying = false
 
 func _ready():
@@ -31,6 +32,10 @@ func damage() -> bool:
 		if dying:
 			TagManager.set_tag(owner.filename + "-bossDead", true)
 			$AnimationTree.active = false
+			emit_signal("dead")
+			yield(get_tree().create_timer(2), "timeout")
+			get_node(deathText).start()
 	return true
 
 signal orbitting
+signal dead

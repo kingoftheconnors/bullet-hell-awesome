@@ -28,12 +28,14 @@ func boss_death():
 var half_filled_healthrow : Node = null
 func initialize_moon(name : String, health):
 	if moons.has(name):
+		if half_filled_healthrow == moons[name]:
+			half_filled_healthrow = null
 		moons[name].queue_free()
 	var health_holder = preload("res://Boss/MoonHealthGui.tscn").instance()
 	health_holder.get_node("Label").text = name
 	health_holder.get_node("TextureProgress").max_value = health
 	health_holder.get_node("TextureProgress").value = health
-	if half_filled_healthrow == null:
+	if half_filled_healthrow == null or !is_instance_valid(half_filled_healthrow):
 		container.add_child(health_holder)
 		half_filled_healthrow = health_holder
 	else:
@@ -56,3 +58,6 @@ func heal_moon(moon : Node2D):
 	if moons.has(moon):
 		var moon_progress = moons[moon].get_node("TextureProgress")
 		moon_progress.value += 1
+
+func new_level():
+	$DeathLight/BossKillAnimator.play("NewLevel")

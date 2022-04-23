@@ -21,14 +21,14 @@ func shoot(direction : Vector2 = default_direction):
 	bullet.global_position = self.global_position
 
 func shoot_at_player():
-	var player = get_tree().root.get_node("Level/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	var bullet = preload("res://Bullets/Flechette.tscn").instance()
 	bullet.direction = (player.global_position - global_position).normalized()
 	get_tree().root.get_node("Level").add_child(bullet)
 	bullet.global_position = self.global_position
 
 func shoot_v_at_player(num_shots : int):
-	var player = get_tree().root.get_node("Level/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	for shotNum in range(num_shots):
 		var bullet = preload("res://Bullets/Flechette.tscn").instance()
 		var direction : Vector2 = (player.global_position - global_position).normalized()
@@ -42,7 +42,7 @@ func shoot_v_at_player(num_shots : int):
 		bullet.global_position = self.global_position
 
 func shoot_laser_beam_at_player():
-	var player = get_tree().root.get_node("Level/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	var laser = preload("res://Bullets/Laser.tscn").instance()
 	laser.direction = (player.global_position - global_position).normalized()
 	add_child(laser)
@@ -55,14 +55,14 @@ func shoot_laser_beam(direction : Vector2 = default_direction):
 	add_child(laser)
 	laser.shoot(true)
 func shoot_horizontal_beam_at_player():
-	var player = get_tree().root.get_node("Level/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	var laser = preload("res://Bullets/Laser.tscn").instance()
 	laser.direction = Vector2.RIGHT
 	get_tree().root.get_node("Level").add_child(laser)
 	laser.position = Vector2(-ProjectSettings.get_setting("display/window/size/width")/2,player.position.y)
 	laser.shoot(true)
 func shoot_vertical_beam_at_player():
-	var player = get_tree().root.get_node("Level/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	var laser = preload("res://Bullets/Laser.tscn").instance()
 	laser.direction = Vector2.DOWN
 	get_tree().root.get_node("Level").add_child(laser)

@@ -58,7 +58,7 @@ func _physics_process(delta):
 			radius_direction = (orbitting_body.global_position - self.global_position).normalized()
 	elif movementMode == MOVEMENT_MODE.CHASE:
 		# Move towards player on up-down angle
-		var player = get_tree().root.get_node("Level/Player")
+		var player = get_tree().get_nodes_in_group("player")[0]
 		var player_radius = (player.global_position - orbitting_body.global_position).length()
 		var moon_radius = (self.global_position - orbitting_body.global_position).length()
 		if abs(player_radius - moon_radius) > 4:
