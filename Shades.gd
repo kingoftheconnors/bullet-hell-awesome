@@ -30,3 +30,5 @@ func damage() -> bool:
 	if dead:
 		queue_free()
 	return true
+
+signal orbitting
