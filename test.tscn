@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Levels/Textbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Music/Bullet Hell demo2.wav" type="AudioStream" id=9]
 [ext_resource path="res://Boss/Moon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
@@ -308,7 +309,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "Sweep (start)"
-length = 5.3
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -629,7 +630,7 @@ states/TrackingTriangle/node = SubResource( 11 )
 states/TrackingTriangle/position = Vector2( 459, 76 )
 transitions = [ "Sweep", "TrackingTriangle", SubResource( 12 ), "TrackingTriangle", "Storm", SubResource( 13 ), "Storm", "Scatter", SubResource( 14 ), "Scatter", "Sweep", SubResource( 15 ), "Sweep (start)", "TrackingTriangle", SubResource( 20 ) ]
 start_node = "Sweep (start)"
-graph_offset = Vector2( -63.1544, 39.8287 )
+graph_offset = Vector2( -63.1544, -39.4713 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
@@ -639,6 +640,7 @@ position = Vector2( 512, 300 )
 [node name="Stars" parent="." instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 36 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -705,18 +707,18 @@ bottom = 170.0
 
 [node name="1 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 first_box = true
 text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
 nextBox = [ NodePath("../1b Orcus") ]
 
 [node name="1b Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 text = "I had hoped you would be better prepared."
 nextBox = [ NodePath("../2 Terra") ]
 
@@ -740,9 +742,9 @@ nextBox = [ NodePath("../3 Orcus") ]
 
 [node name="3 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 text = "He knew this was coming."
 nextBox = [ NodePath("../4 Terra") ]
 
@@ -766,18 +768,18 @@ nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 text = "I do not blame you for doing so."
 nextBox = [ NodePath("../5b Orcus") ]
 
 [node name="5b Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
-text = "Of your saviour, why do you think he has not come? Despair? Fear?"
+margin_bottom = 101.0
+text = "Of your saviour, why do you think he has not come? Hatred? Fear?"
 nextBox = [ NodePath("../6 Terra") ]
 
 [node name="6 Terra" parent="." instance=ExtResource( 8 )]
@@ -791,17 +793,17 @@ nextBox = [ NodePath("../7 Orcus") ]
 
 [node name="7 Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 text = "And you do not rule out despair."
 nextBox = [ NodePath("../7b Orcus") ]
 
 [node name="7b Orcus" parent="." instance=ExtResource( 8 )]
 margin_left = -176.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 93.0
+margin_bottom = 101.0
 text = "I am surprised you have not fallen victim to it as well."
 nextBox = [ NodePath("../8 Terra") ]
 
@@ -812,7 +814,10 @@ margin_right = 172.0
 margin_bottom = -27.0
 text = "[shake]Enough! You will not claim another life![/shake]"
 color = "green"
-nextBox = [ NodePath("../Shades"), NodePath("../Player") ]
+nextBox = [ NodePath("../Shades"), NodePath("../Player"), NodePath("../AudioStreamPlayer") ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+script = ExtResource( 11 )
+
+[connection signal="dead" from="Player" to="AudioStreamPlayer" method="stop"]
