@@ -393,7 +393,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ -170.0, -110.0 ]
+"values": [ -170.0, -112.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Arena:bottom")
@@ -405,7 +405,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ 170.0, 110.0 ]
+"values": [ 170.0, 112.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("../Arena:left")
@@ -685,6 +685,7 @@ bulletsPerSecond = 0.0
 
 [node name="BulletStorm" parent="Shades" instance=ExtResource( 6 )]
 rotate_speed = 180
+shoot_timer_wait_time = 0.15
 spawn_point_count = 3
 
 [node name="Moon" parent="Shades" instance=ExtResource( 10 )]
@@ -703,78 +704,112 @@ right = 270.0
 bottom = 170.0
 
 [node name="1 Orcus" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = 40.0
-margin_right = 150.0
-margin_bottom = 57.0
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
 first_box = true
 text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
-nextBox = [ NodePath("../2 Orcus") ]
+nextBox = [ NodePath("../1b Orcus") ]
 
-[node name="2 Orcus" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = 40.0
-margin_right = 150.0
-margin_bottom = 57.0
+[node name="1b Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
 text = "I had hoped you would be better prepared."
-nextBox = [ NodePath("../3 Terra") ]
+nextBox = [ NodePath("../2 Terra") ]
 
-[node name="3 Terra" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = -80.0
-margin_right = 150.0
-margin_bottom = -63.0
+[node name="2 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
 text = "Nonsense, Orcus."
 color = "green"
+nextBox = [ NodePath("../2b Terra") ]
+
+[node name="2b Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
+text = "Did you believe Jupiter would let you take the souls of myself and the humans?"
+color = "green"
+nextBox = [ NodePath("../3 Orcus") ]
+
+[node name="3 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
+text = "He knew this was coming."
 nextBox = [ NodePath("../4 Terra") ]
 
 [node name="4 Terra" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = -80.0
-margin_right = 150.0
-margin_bottom = -63.0
-text = "Did you believe Jupiter would let you take the souls of myself and the humans, dragging us screaming into the abyss?"
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
+text = "We won't go gentle into the abyss."
+color = "green"
+nextBox = [ NodePath("../4b Terra") ]
+
+[node name="4b Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
+text = "[shake]We will scream your name in a unified curse.[/shake]"
 color = "green"
 nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = 40.0
-margin_right = 150.0
-margin_bottom = 57.0
-text = "And where is he to stop me from expanding my domain, as was my birthright?"
-nextBox = [ NodePath("../6 Orcus") ]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
+text = "I do not blame you for doing so."
+nextBox = [ NodePath("../5b Orcus") ]
 
-[node name="6 Orcus" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = 40.0
-margin_right = 150.0
-margin_bottom = 57.0
-text = "Does he, too, fear the inevitable?"
-nextBox = [ NodePath("../7 Terra") ]
+[node name="5b Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
+text = "Of your saviour, why do you think he has not come? Despair? Fear?"
+nextBox = [ NodePath("../6 Terra") ]
 
-[node name="7 Terra" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = -80.0
-margin_right = 150.0
-margin_bottom = -63.0
+[node name="6 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
 text = "Jupiter fears nothing."
 color = "green"
-nextBox = [ NodePath("../8 Orcus") ]
+nextBox = [ NodePath("../7 Orcus") ]
 
-[node name="8 Orcus" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = 40.0
-margin_right = 150.0
-margin_bottom = 57.0
-text = "Do you? Because he does not seem to be arriving any time soon."
-nextBox = [ NodePath("../9 Terra") ]
+[node name="7 Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
+text = "And you do not rule out despair."
+nextBox = [ NodePath("../7b Orcus") ]
 
-[node name="9 Terra" parent="." instance=ExtResource( 8 )]
-margin_left = -150.0
-margin_top = -80.0
-margin_right = 150.0
-margin_bottom = -63.0
+[node name="7b Orcus" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = 44.0
+margin_right = 172.0
+margin_bottom = 93.0
+text = "I am surprised you have not fallen victim to it as well."
+nextBox = [ NodePath("../8 Terra") ]
+
+[node name="8 Terra" parent="." instance=ExtResource( 8 )]
+margin_left = -176.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -27.0
 text = "[shake]Enough! You will not claim another life![/shake]"
 color = "green"
 nextBox = [ NodePath("../Shades"), NodePath("../Player") ]
