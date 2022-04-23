@@ -10,7 +10,7 @@ export(String) var bossName = "Boss Name"
 func _ready():
 	BossHealthGui.initialize(bossName, health)
 
-func start():
+func start(_skip):
 	$AnimationTree.active = true
 
 func start_orbit():
