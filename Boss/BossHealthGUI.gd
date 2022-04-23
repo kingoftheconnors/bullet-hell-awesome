@@ -14,10 +14,18 @@ func damage() -> bool:
 	progress.value -= 1
 	if progress.value <= 0:
 		container.visible = false
+		boss_death()
 		return true
 	return false
 
 var moons : Dictionary = {}
+func boss_death():
+	$DeathLight/BossKillAnimator.play("Die")
+	yield(get_tree().create_timer(2), "timeout")
+	for moon in moons.values():
+		moon.queue_free()
+
+var half_filled_healthrow : Node = null
 func initialize_moon(name : String, health):
 	if moons.has(name):
 		moons[name].queue_free()
@@ -25,7 +33,13 @@ func initialize_moon(name : String, health):
 	health_holder.get_node("Label").text = name
 	health_holder.get_node("TextureProgress").max_value = health
 	health_holder.get_node("TextureProgress").value = health
-	container.add_child(health_holder)
+	if half_filled_healthrow == null:
+		container.add_child(health_holder)
+		half_filled_healthrow = health_holder
+	else:
+		health_holder.alignment = HALIGN_RIGHT
+		half_filled_healthrow.add_child(health_holder)
+		half_filled_healthrow = null
 	moons[name] = health_holder
 
 func damage_moon(name : String) -> bool:

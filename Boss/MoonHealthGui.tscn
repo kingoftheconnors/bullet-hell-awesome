@@ -9,12 +9,13 @@ font_data = ExtResource( 1 )
 [node name="MoonHealthGui" type="HBoxContainer"]
 margin_left = 8.0
 margin_top = 6.0
-margin_right = 524.0
-margin_bottom = 23.0
+margin_right = 251.0
+margin_bottom = 22.0
 
 [node name="Label" type="Label" parent="."]
-margin_right = 64.0
+margin_right = 135.0
 margin_bottom = 16.0
+rect_min_size = Vector2( 135, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 1
@@ -23,9 +24,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Moon"
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 68.0
-margin_right = 418.0
-margin_bottom = 17.0
-rect_scale = Vector2( 0.5, 1 )
+margin_left = 139.0
+margin_right = 239.0
+margin_bottom = 16.0
 value = 100.0
 texture_progress = ExtResource( 2 )

@@ -6,6 +6,7 @@ onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 export(int, 0, 500) var health = 50
 export(String) var bossName = "Boss Name"
+var dying = false
 
 func _ready():
 	BossHealthGui.initialize(bossName, health)
@@ -25,10 +26,11 @@ func stop_orbit():
 
 # Damage function. Returns true if bullet that hits it should be removed
 func damage() -> bool:
-	var dead = BossHealthGui.damage()
-	# TODO: Die
-	if dead:
-		queue_free()
+	if !dying:
+		dying = BossHealthGui.damage()
+		if dying:
+			TagManager.set_tag(owner.filename + "-bossDead", true)
+			$AnimationTree.active = false
 	return true
 
 signal orbitting
