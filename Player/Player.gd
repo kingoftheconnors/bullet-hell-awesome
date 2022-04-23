@@ -11,9 +11,9 @@ const THIN = 0.65
 onready var sprite = $Sprite
 onready var particleEmitter = $Particles2D
 onready var asteroids = $Asteroids
-const NUM_ASTEROIDS = 2
-const HEAL_TIME_AFTER_DAMAGE = 9
-const HEAL_TIME_AFTER_FIRST_HEAL = 4
+const NUM_ASTEROIDS = 3
+const HEAL_TIME_AFTER_DAMAGE = 7
+const HEAL_TIME_AFTER_FIRST_HEAL = 1.5
 var dead : bool = false
 
 var shooting : bool = false
