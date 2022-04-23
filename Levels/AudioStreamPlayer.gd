@@ -1,7 +1,8 @@
-extends AudioStreamPlayer
+extends Node
 
 func start(_skip):
-	playing = true
+	if !BattleMusic.playing:
+		BattleMusic.playing = true
 
 func stop():
-	playing = false
+	BattleMusic.playing = false

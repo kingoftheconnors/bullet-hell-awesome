@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Boss/Moon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=9]
 [ext_resource path="res://Levels/NextLevel.gd" type="Script" id=10]
 [ext_resource path="res://Shades.gd" type="Script" id=13]
-[ext_resource path="res://Music/Bullet Hell demo2.wav" type="AudioStream" id=15]
 [ext_resource path="res://Boss/Jupiter.png" type="Texture" id=17]
 
 [sub_resource type="Gradient" id=1]
@@ -840,7 +839,7 @@ margin_top = -248.0
 margin_right = -342.0
 margin_bottom = -199.0
 text = "I would not want it any other way."
-nextBox = [ NodePath("../../Level/Jupiter"), NodePath("../../Level/Player"), NodePath("../../AudioStreamPlayer") ]
+nextBox = [ NodePath("../../Level/Jupiter"), NodePath("../../Level/Player"), NodePath("../../BackgroundMusicPlayer") ]
 
 [node name="ClosingDialog" type="CanvasLayer" parent="."]
 layer = 3
@@ -926,6 +925,5 @@ nextBox = [ NodePath("../NextLevel") ]
 [node name="NextLevel" type="Node" parent="ClosingDialog"]
 script = ExtResource( 10 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+[node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 9 )

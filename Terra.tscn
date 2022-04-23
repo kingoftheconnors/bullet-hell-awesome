@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stars.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Textbox.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Music/Bullet Hell demo2.wav" type="AudioStream" id=9]
 [ext_resource path="res://Boss/Moon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=11]
 [ext_resource path="res://Levels/NextLevel.gd" type="Script" id=12]
@@ -1235,7 +1234,7 @@ margin_right = -342.0
 margin_bottom = -327.0
 text = "[shake]Enough! You will not claim another life![/shake]"
 color = "green"
-nextBox = [ NodePath("../../Level/Shades"), NodePath("../../Level/Player"), NodePath("../../AudioStreamPlayer") ]
+nextBox = [ NodePath("../../Level/Shades"), NodePath("../../Level/Player"), NodePath("../../BackgroundMusicPlayer") ]
 
 [node name="ClosingDialog" type="CanvasLayer" parent="."]
 layer = 3
@@ -1288,8 +1287,7 @@ nextBox = [ NodePath("../NextLevel") ]
 script = ExtResource( 12 )
 level_name = "res://Jupiter.tscn"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+[node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 11 )
 
-[connection signal="dead" from="Level/Shades" to="AudioStreamPlayer" method="stop"]
+[connection signal="dead" from="Level/Shades" to="BackgroundMusicPlayer" method="stop"]
