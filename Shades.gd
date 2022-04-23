@@ -39,5 +39,9 @@ func damage() -> bool:
 			get_node(deathText).start()
 	return true
 
+func _on_ColliderDamage_body_entered(body):
+	if body.has_method("damage"):
+		body.damage()
+
 signal orbitting
 signal dead

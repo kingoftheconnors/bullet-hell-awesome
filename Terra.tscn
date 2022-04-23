@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -19,7 +19,10 @@
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="CircleShape2D" id=21]
-radius = 38.0
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=28]
+radius = 6.5
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -1080,8 +1083,12 @@ color_ramp = SubResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Shades"]
-scale = Vector2( 0.3, 0.3 )
 shape = SubResource( 21 )
+
+[node name="ColliderDamage" type="Area2D" parent="Level/Shades"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Shades/ColliderDamage"]
+shape = SubResource( 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Shades"]
 anims/RESET = SubResource( 3 )
@@ -1293,3 +1300,4 @@ level_name = "res://Jupiter.tscn"
 script = ExtResource( 11 )
 
 [connection signal="dead" from="Level/Shades" to="BackgroundMusicPlayer" method="stop"]
+[connection signal="body_entered" from="Level/Shades/ColliderDamage" to="Level/Shades" method="_on_ColliderDamage_body_entered"]
