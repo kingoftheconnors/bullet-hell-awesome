@@ -15,11 +15,11 @@
 [ext_resource path="res://sfx/Spinning Attack SFX.wav" type="AudioStream" id=14]
 [ext_resource path="res://sfx/Pink Bullet Attack SFX.wav" type="AudioStream" id=15]
 
-[sub_resource type="CircleShape2D" id=21]
-radius = 38.0
-
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 38.0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -1066,21 +1066,22 @@ health = 90
 bossName = "Terra"
 deathText = NodePath("../../ClosingDialog/1 Terra")
 
+[node name="Particles2D" type="CPUParticles2D" parent="Level/Shades"]
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+scale_amount = 2.0
+color_ramp = SubResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="Level/Shades"]
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Shades"]
 scale = Vector2( 0.3, 0.3 )
 shape = SubResource( 21 )
-
-[node name="Particles2D" type="CPUParticles2D" parent="Level/Shades"]
-local_coords = false
-emission_shape = 1
-emission_sphere_radius = 3.0
-direction = Vector2( 0, 0 )
-gravity = Vector2( 0, 0 )
-initial_velocity = 10.0
-color_ramp = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Shades"]
 anims/RESET = SubResource( 3 )
@@ -1110,6 +1111,7 @@ moon_name = "Luna"
 
 [node name="Sfx" type="AudioStreamPlayer" parent="Level/Shades"]
 stream = ExtResource( 15 )
+bus = "Sfx"
 
 [node name="Arena" parent="Level" instance=ExtResource( 2 )]
 margin_left = -270.0
