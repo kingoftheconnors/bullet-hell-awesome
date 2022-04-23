@@ -142,6 +142,7 @@ anims/Vincible = SubResource( 5 )
 [node name="Asteroids" type="Node2D" parent="."]
 script = ExtResource( 3 )
 rotate_speed = 150
+radius = 8
 
 [node name="HealTimer" type="Timer" parent="."]
 

@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 BossHealthGui="*res://Boss/BossHealthGUI.tscn"
 DeathScreenGui="*res://Player/DeathScreenGui.tscn"
 TagManager="*res://MainMenu/TagManager.gd"
+BattleMusic="*res://Music/BattleMusic.tscn"
 
 [display]
 

@@ -927,3 +927,5 @@ script = ExtResource( 10 )
 
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[connection signal="dead" from="Level/Jupiter" to="BackgroundMusicPlayer" method="stop"]

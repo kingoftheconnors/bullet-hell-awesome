@@ -15,6 +15,7 @@ func _ready():
 
 func start(_skip):
 	$AnimationTree.active = true
+	BossHealthGui.show()
 
 func start_orbit():
 	get_tree().call_group("orbiter", "start_orbit", self)

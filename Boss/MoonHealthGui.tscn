@@ -24,6 +24,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Moon"
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0.74902 )
 margin_left = 139.0
 margin_right = 239.0
 margin_bottom = 16.0

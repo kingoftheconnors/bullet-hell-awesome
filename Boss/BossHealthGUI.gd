@@ -1,19 +1,22 @@
 extends Node
 
 onready var container : Control = get_node("MarginContainer/VBoxContainer")
+onready var container_animator = get_node("MarginContainer/VBoxContainer/AnimationPlayer")
 onready var progress : TextureProgress = get_node("MarginContainer/VBoxContainer/HBoxContainer/TextureProgress")
 onready var label : Label = get_node("MarginContainer/VBoxContainer/HBoxContainer/Label")
 
 func initialize(name, health):
-	container.visible = true
 	label.text = name
 	progress.max_value = health
 	progress.value = health
 
+func show():
+	container_animator.play("show")
+
 func damage() -> bool:
 	progress.value -= 1
 	if progress.value <= 0:
-		container.visible = false
+		container_animator.play("hide")
 		boss_death()
 		return true
 	return false
@@ -23,7 +26,8 @@ func boss_death():
 	$DeathLight/BossKillAnimator.play("Die")
 	yield(get_tree().create_timer(2), "timeout")
 	for moon in moons.values():
-		moon.queue_free()
+		if is_instance_valid(moon):
+			moon.queue_free()
 
 var half_filled_healthrow : Node = null
 func initialize_moon(name : String, health):
