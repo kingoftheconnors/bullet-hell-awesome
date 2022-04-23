@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Machine Gun_Shotgun SFX.wav-b9caa99f2ca0a56e3b10c7fe64721b07.sample"
+
+[deps]
+
+source_file="res://sfx/Machine Gun_Shotgun SFX.wav"
+dest_files=[ "res://.import/Machine Gun_Shotgun SFX.wav-b9caa99f2ca0a56e3b10c7fe64721b07.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

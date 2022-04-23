@@ -47,6 +47,7 @@ func damage() -> bool:
 			sprite.visible = false
 			$DeathParticles.emitting = true
 			dead = true
+			$DeathPlayer.play()
 			DeathScreenGui.initialize()
 			emit_signal("dead")
 		else:

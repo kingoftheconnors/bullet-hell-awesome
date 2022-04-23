@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pink Bullet Attack SFX.wav-fdbe76f2604a19ebef791ce7e4a7d65c.sample"
+
+[deps]
+
+source_file="res://sfx/Pink Bullet Attack SFX.wav"
+dest_files=[ "res://.import/Pink Bullet Attack SFX.wav-fdbe76f2604a19ebef791ce7e4a7d65c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

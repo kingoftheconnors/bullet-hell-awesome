@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Spinning Attack SFX.wav-4503dc13888df0e0873fbf6a063fe451.sample"
+
+[deps]
+
+source_file="res://sfx/Spinning Attack SFX.wav"
+dest_files=[ "res://.import/Spinning Attack SFX.wav-4503dc13888df0e0873fbf6a063fe451.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
