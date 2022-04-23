@@ -16,6 +16,7 @@ func _ready():
 func start():
 	$VBoxContainer/RichTextLabel.append_bbcode(
 		"[center][color=" + color + "]" + text + "[/color]")
+	animator.playback_speed = 20.0/text.length()
 	animator.play("showBox")
 	active = true
 
@@ -23,7 +24,7 @@ func _input(event):
 	if active:
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 			if animator.current_animation_position < animator.current_animation_length:
-				animator.advance(animator.current_animation_length - animator.current_animation_position)
+				animator.advance((animator.current_animation_length - animator.current_animation_position)*text.length())
 			else:
 				emit_signal("next_box")
 				for i in nextBox:
