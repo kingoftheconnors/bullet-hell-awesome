@@ -929,5 +929,3 @@ script = ExtResource( 10 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 script = ExtResource( 9 )
-
-[connection signal="dead" from="Level/Player" to="AudioStreamPlayer" method="stop"]

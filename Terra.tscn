@@ -1292,5 +1292,4 @@ level_name = "res://Jupiter.tscn"
 stream = ExtResource( 9 )
 script = ExtResource( 11 )
 
-[connection signal="dead" from="Level/Player" to="AudioStreamPlayer" method="stop"]
 [connection signal="dead" from="Level/Shades" to="AudioStreamPlayer" method="stop"]
