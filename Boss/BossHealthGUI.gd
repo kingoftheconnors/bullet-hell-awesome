@@ -7,15 +7,14 @@ onready var label : Label = get_node("MarginContainer/VBoxContainer/HBoxContaine
 
 func initialize(name, health):
 	label.text = name
-	progress.max_value = health
-	progress.value = health
+	progress.set_health(health)
 
 func show():
 	container_animator.play("show")
 
 func damage() -> bool:
-	progress.value -= 1
-	if progress.value <= 0:
+	progress.damage()
+	if progress.get_health() <= 0:
 		container_animator.play("hide")
 		boss_death()
 		return true
@@ -36,9 +35,6 @@ func initialize_moon(name : String, health):
 			half_filled_healthrow = null
 		moons[name].queue_free()
 	var health_holder = preload("res://Boss/MoonHealthGui.tscn").instance()
-	health_holder.get_node("Label").text = name
-	health_holder.get_node("TextureProgress").max_value = health
-	health_holder.get_node("TextureProgress").value = health
 	if half_filled_healthrow == null or !is_instance_valid(half_filled_healthrow):
 		container.add_child(health_holder)
 		half_filled_healthrow = health_holder
@@ -46,13 +42,15 @@ func initialize_moon(name : String, health):
 		health_holder.alignment = HALIGN_RIGHT
 		half_filled_healthrow.add_child(health_holder)
 		half_filled_healthrow = null
+	health_holder.get_node("Label").text = name
+	health_holder.get_node("TextureProgress").set_health(health)
 	moons[name] = health_holder
 
 func damage_moon(name : String) -> bool:
 	if moons.has(name):
 		var moon_progress = moons[name].get_node("TextureProgress")
-		moon_progress.value -= 1
-		if moon_progress.value <= 0:
+		moon_progress.damage()
+		if moon_progress.get_health() <= 0:
 			return true
 		return false
 	else:

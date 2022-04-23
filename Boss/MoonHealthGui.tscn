@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://font/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Boss/MoonHealthBar.png" type="Texture" id=2]
+[ext_resource path="res://Boss/MoonHealthBarDropping.png" type="Texture" id=3]
+[ext_resource path="res://Boss/HealthBar.gd" type="Script" id=4]
+[ext_resource path="res://Boss/HealthLostBar.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -24,9 +27,23 @@ custom_fonts/font = SubResource( 1 )
 text = "Moon"
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-modulate = Color( 1, 1, 1, 0.74902 )
+self_modulate = Color( 1, 1, 1, 0.784314 )
 margin_left = 139.0
 margin_right = 239.0
 margin_bottom = 16.0
 value = 100.0
 texture_progress = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="HealthLostBar" type="TextureProgress" parent="TextureProgress"]
+self_modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="TextureProgress"]
+
+[connection signal="timeout" from="TextureProgress/Timer" to="TextureProgress/HealthLostBar" method="_on_Timer_timeout"]
