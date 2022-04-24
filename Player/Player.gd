@@ -20,7 +20,7 @@ var shooting : bool = false
 const TIME_BETWEEN_BULLETS = 0.15
 var timeSinceLastBullet : float = 0
 
-const ORBIT_TURNAROUND_TIME = 550
+const ORBIT_TURNAROUND_TIME = 2000
 var orbitting_body : Node2D
 var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
