@@ -936,5 +936,4 @@ script = ExtResource( 10 )
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[connection signal="dead" from="Level/Jupiter" to="BackgroundMusicPlayer" method="stop"]
 [connection signal="body_entered" from="Level/Jupiter/ColliderDamage" to="Level/Jupiter" method="_on_ColliderDamage_body_entered"]

@@ -1299,5 +1299,4 @@ level_name = "res://Jupiter.tscn"
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 11 )
 
-[connection signal="dead" from="Level/Shades" to="BackgroundMusicPlayer" method="stop"]
 [connection signal="body_entered" from="Level/Shades/ColliderDamage" to="Level/Shades" method="_on_ColliderDamage_body_entered"]

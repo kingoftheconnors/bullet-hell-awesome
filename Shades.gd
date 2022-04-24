@@ -36,6 +36,7 @@ func damage() -> bool:
 			$AnimationTree.active = false
 			emit_signal("dead")
 			yield(get_tree().create_timer(2), "timeout")
+			BattleMusic.play_ambience()
 			get_node(deathText).start()
 	return true
 

@@ -51,6 +51,7 @@ func damage() -> bool:
 			DeathScreenGui.initialize()
 			emit_signal("dead")
 		else:
+			$DamagePlayer.play()
 			asteroids.remove_asteroid()
 			invincibilityAnimator['parameters/playback'].travel("Invincible")
 			$HealTimer.start(HEAL_TIME_AFTER_DAMAGE)
@@ -141,6 +142,7 @@ func _input(event):
 func _on_HealTimer_timeout():
 	if !dead and asteroids.get_num_asteroids() < NUM_ASTEROIDS:
 		asteroids.add_asteroid()
+		$AsteroidHealingPlayer.play()
 		$HealTimer.start(HEAL_TIME_AFTER_FIRST_HEAL)
 
 func _ready():

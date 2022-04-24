@@ -1,8 +1,7 @@
 extends Node
 
 func start(_skip):
-	if !BattleMusic.playing:
-		BattleMusic.playing = true
+	BattleMusic.play_battle_music()
 
 func stop():
-	BattleMusic.playing = false
+	BattleMusic.stop()

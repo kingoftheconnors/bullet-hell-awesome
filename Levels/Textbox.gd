@@ -15,6 +15,7 @@ func _ready():
 			start(true)
 		else:
 			start()
+			BattleMusic.play_ambience()
 			TagManager.set_tag(owner.filename, true)
 
 func start(skip = false):
