@@ -936,6 +936,7 @@ nextBox = [ NodePath("../NextLevel") ]
 
 [node name="NextLevel" type="Node" parent="ClosingDialog"]
 script = ExtResource( 10 )
+level_name = "res://Pluto.tscn"
 
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 9 )

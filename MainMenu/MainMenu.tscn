@@ -117,7 +117,7 @@ anims/FadeMusic = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="Player" parent="HBoxContainer/VBoxContainer/OrbitArea" instance=ExtResource( 2 )]
-position = Vector2( 144, 4 )
+position = Vector2( 144, 14 )
 movementMode = 1
 orbitting_body_path = NodePath("../StaticBody2D")
 is_active = true
