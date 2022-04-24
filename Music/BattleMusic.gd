@@ -1,9 +1,9 @@
 extends AudioStreamPlayer
 
 enum MUSIC {
+	NONE,
 	BATTLE,
 	AMBIENCE,
-	NONE,
 }
 
 var current_music = MUSIC.NONE
