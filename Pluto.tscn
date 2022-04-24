@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Player/Orcus.png" type="Texture" id=1]
+[ext_resource path="res://Boss/Pluto.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=4]
@@ -25,83 +25,46 @@ radius = 3.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.0
 
-[sub_resource type="Animation" id=19]
-resource_name = "Expand"
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Arena:left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -50.0, -150.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Arena:top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -50.0, -150.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../Arena:right")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 50.0, 150.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../Arena:bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 50.0, 150.0 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Hourglass"
+[sub_resource type="Animation" id=31]
+resource_name = "Laser BLAST"
 length = 6.0
-step = 0.243
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/type = "method"
+tracks/0/path = NodePath("BulletSpawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 2, 3, 4, 5, 5.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 96, -96 ), Vector2( -96, -96 ), Vector2( 96, 96 ), Vector2( -96, 96 ), Vector2( 96, -96 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("BulletSpawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0, 1.1, 2, 2.4, 2.8, 4.2, 4.4, 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot_horizontal_beam_at_player"
+}, {
+"args": [  ],
+"method": "shoot_vertical_beam_at_player"
+}, {
+"args": [  ],
+"method": "shoot_laser_beam_at_player"
+}, {
+"args": [  ],
+"method": "shoot_laser_beam_at_player"
+}, {
+"args": [  ],
+"method": "shoot_laser_beam_at_player"
+}, {
+"args": [ Vector2( 1, 0 ) ],
+"method": "shoot_laser_beam"
+}, {
+"args": [ Vector2( 0, 1 ) ],
+"method": "shoot_laser_beam"
+}, {
+"args": [ Vector2( -1, 0 ) ],
+"method": "shoot_laser_beam"
+}, {
+"args": [ Vector2( 0, -1 ) ],
+"method": "shoot_laser_beam"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -168,57 +131,6 @@ tracks/4/keys = {
 "values": [ 150.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Shrink"
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Arena:left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -150.0, -50.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Arena:top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -150.0, -50.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../Arena:right")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 150.0, 50.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../Arena:bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 150.0, 50.0 ]
-}
-
 [sub_resource type="Animation" id=8]
 resource_name = "Spin"
 length = 4.0
@@ -247,320 +159,17 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Sweep (start)"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5, 1.6, 3.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -1.52588e-05, -96 ), Vector2( -96, -96 ), Vector2( 96, -96 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("BulletSpawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ null ],
-"method": "shoot"
-}, {
-"args": [ Vector2( 1, 0 ) ],
-"method": "shoot"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../Arena:top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
-"update": 0,
-"values": [ -170.0, -112.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../Arena:bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
-"update": 0,
-"values": [ 170.0, 112.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../Arena:left")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
-"update": 0,
-"values": [ -270.0, -110.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../Arena:right")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
-"update": 0,
-"values": [ 270.0, 110.0 ]
-}
-
-[sub_resource type="Animation" id=10]
-length = 6.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 1, 3, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 96, -96 ), Vector2( 0, 96 ), Vector2( -96, -96 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("BulletSpawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [  ],
-"method": "shoot_at_player"
-}, {
-"args": [ 5 ],
-"method": "shoot_v_at_player"
-} ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Wham-Bam-Slam Sam"
-length = 5.0
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 10, 1, 10, 1, 10, 1, 10, 1, 10 ),
-"update": 3,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -96, 0 ), Vector2( 0, 0 ), Vector2( 96, 0 ), Vector2( 0, 0 ), Vector2( 0, -96 ), Vector2( 0, 0 ), Vector2( 0, 96 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "start_orbit"
-}, {
-"args": [  ],
-"method": "stop_orbit"
-} ]
-}
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Laser BLAST"
 
 [sub_resource type="AnimationNodeStateMachine" id=30]
+"states/Laser BLAST/node" = SubResource( 32 )
+"states/Laser BLAST/position" = Vector2( 274, 192 )
+start_node = "Laser BLAST"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
-[node name="Pluto" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="Stars" parent="." instance=ExtResource( 7 )]
 position = Vector2( 256, 156 )
@@ -610,14 +219,9 @@ shape = SubResource( 28 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Node2D/Pluto"]
-anims/Expand = SubResource( 19 )
-anims/Hourglass = SubResource( 6 )
+"anims/Laser BLAST" = SubResource( 31 )
 anims/RESET = SubResource( 5 )
-anims/Shrink = SubResource( 4 )
 anims/Spin = SubResource( 8 )
-"anims/Sweep (start)" = SubResource( 9 )
-anims/TrackingTriangle = SubResource( 10 )
-"anims/Wham-Bam-Slam Sam" = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Level/Node2D/Pluto"]
 tree_root = SubResource( 30 )

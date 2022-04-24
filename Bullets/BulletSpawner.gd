@@ -59,12 +59,12 @@ func shoot_horizontal_beam_at_player():
 	var laser = preload("res://Bullets/Laser.tscn").instance()
 	laser.direction = Vector2.RIGHT
 	get_tree().root.get_node("Level").add_child(laser)
-	laser.position = Vector2(-ProjectSettings.get_setting("display/window/size/width")/2,player.position.y)
+	laser.global_position = Vector2(-10,player.global_position.y)
 	laser.shoot(true)
 func shoot_vertical_beam_at_player():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	var laser = preload("res://Bullets/Laser.tscn").instance()
 	laser.direction = Vector2.DOWN
 	get_tree().root.get_node("Level").add_child(laser)
-	laser.position = Vector2(player.position.x,-ProjectSettings.get_setting("display/window/size/height")/2)
+	laser.global_position = Vector2(player.global_position.x,-10)
 	laser.shoot(true)
