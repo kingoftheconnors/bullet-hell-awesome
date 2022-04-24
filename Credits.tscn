@@ -18,15 +18,15 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 52.0
-margin_right = 460.0
+margin_left = 68.0
+margin_right = 444.0
 margin_bottom = 300.0
 custom_constants/separation = 10
 alignment = 1
 
 [node name="Label2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 margin_top = 42.0
-margin_right = 408.0
+margin_right = 376.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 300, 20 )
 size_flags_horizontal = 3
@@ -39,7 +39,7 @@ scroll_active = false
 
 [node name="Label4" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 margin_top = 72.0
-margin_right = 408.0
+margin_right = 376.0
 margin_bottom = 127.0
 rect_min_size = Vector2( 300, 55 )
 size_flags_horizontal = 3
@@ -52,7 +52,7 @@ scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 137.0
-margin_right = 408.0
+margin_right = 376.0
 margin_bottom = 213.0
 custom_constants/separation = 24
 
@@ -101,11 +101,11 @@ valign = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 232.0
-margin_right = 408.0
+margin_right = 376.0
 margin_bottom = 76.0
 
 [node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 176.0
+margin_right = 144.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -115,7 +115,7 @@ valign = 1
 
 [node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 20.0
-margin_right = 176.0
+margin_right = 144.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -125,7 +125,7 @@ valign = 1
 
 [node name="Label9" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 40.0
-margin_right = 176.0
+margin_right = 144.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -135,17 +135,17 @@ valign = 1
 
 [node name="Label10" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 60.0
-margin_right = 176.0
+margin_right = 144.0
 margin_bottom = 76.0
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
-text = "Facusimon90"
+text = "FSV2"
 align = 2
 valign = 1
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 223.0
-margin_right = 408.0
+margin_right = 376.0
 margin_bottom = 258.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
