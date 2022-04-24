@@ -25,7 +25,7 @@ export(NodePath) var orbitting_body_path
 var orbitting_body : Node2D
 var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
-var orbitting_time_of_last_h_input : int = 0
+var orbitting_time_of_last_h_input : int = -INF
 
 export(bool) var is_active = false
 
@@ -76,9 +76,10 @@ func _physics_process(delta):
 		elif movementMode == MOVEMENT_MODE.ORBIT:
 			if not is_instance_valid(orbitting_body):
 				return
+			var cur_radius = self.position.distance_to(orbitting_body.position)
 			# Moving towards or away from planet
 			move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * Input.get_action_strength("ui_down"))
-			if self.position.distance_to(orbitting_body.position) < orbitting_body.orbit_radius:
+			if cur_radius < orbitting_body.orbit_radius:
 				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * -Input.get_action_strength("ui_up"))
 			else:
 				# Force move towards planet
@@ -88,7 +89,7 @@ func _physics_process(delta):
 			# Player left/right
 			var this_horizontal = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"))
 			# If time is close enough to previous key-release, use old keys to decide direction
-			if OS.get_ticks_msec() - orbitting_time_of_last_h_input > ORBIT_TURNAROUND_TIME:
+			if abs(OS.get_ticks_msec() - orbitting_time_of_last_h_input) > ORBIT_TURNAROUND_TIME:
 				if this_horizontal != 0:
 					# If player wants to go right BELOW orbit object, go counterclockwise
 					if (self.global_position.y > orbitting_body.global_position.y):
@@ -99,8 +100,9 @@ func _physics_process(delta):
 			if this_horizontal != 0:
 				orbitting_time_of_last_h_input = OS.get_ticks_msec() 
 			orbitting_input_strength = orbitting_cur_direction * this_horizontal
-			horizontal = sin(current_angle) * orbitting_input_strength
-			vertical = -cos(current_angle) * orbitting_input_strength
+			var angle_offset = cur_radius*0.0003*this_horizontal*-orbitting_cur_direction
+			horizontal = sin(current_angle + angle_offset) * orbitting_input_strength
+			vertical = -cos(current_angle + angle_offset) * orbitting_input_strength
 			update()
 		if horizontal == 0 and vertical == 0:
 			particleEmitter.initial_velocity = 0
