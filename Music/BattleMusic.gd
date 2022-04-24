@@ -9,14 +9,14 @@ enum MUSIC {
 var current_music = MUSIC.NONE
 
 func play_battle_music():
-	stream = preload("res://Music/Bullet Hell demo2.wav")
 	if current_music != MUSIC.BATTLE:
+		stream = preload("res://Music/Bullet Hell demo2.wav")
 		play()
 	current_music = MUSIC.BATTLE
 
 func play_ambience():
-	stream = preload("res://Music/Cutscene ambience.wav")
 	if current_music != MUSIC.AMBIENCE:
+		stream = preload("res://Music/Cutscene ambience.wav")
 		play()
 	current_music = MUSIC.AMBIENCE
 

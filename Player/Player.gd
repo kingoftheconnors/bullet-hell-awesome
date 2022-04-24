@@ -30,6 +30,8 @@ export(bool) var is_active = false
 
 func start(_skip):
 	is_active = true
+func stop():
+	is_active = false
 
 func start_orbit(orbiter):
 	orbitting_body = orbiter
@@ -42,7 +44,7 @@ func stop_orbit():
 onready var invincibilityAnimator = $AnimationTree
 export(bool) var invincible = false
 func damage() -> bool:
-	if !invincible and !dead:
+	if !invincible and !dead and is_active:
 		if asteroids.get_num_asteroids() == 0:
 			sprite.visible = false
 			$DeathParticles.emitting = true

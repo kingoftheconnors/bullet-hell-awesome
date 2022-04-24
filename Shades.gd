@@ -35,8 +35,11 @@ func damage() -> bool:
 			TagManager.set_tag(owner.filename + "-bossDead", true)
 			$AnimationTree.active = false
 			emit_signal("dead")
+			# TODO: Play boss death sfx
+			BattleMusic.stop()
 			yield(get_tree().create_timer(2), "timeout")
 			BattleMusic.play_ambience()
+			get_tree().get_nodes_in_group("player")[0].stop()
 			get_node(deathText).start()
 	return true
 
