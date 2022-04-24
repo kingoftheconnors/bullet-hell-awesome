@@ -553,7 +553,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -170.0, -112.0 ]
 }
@@ -565,7 +565,7 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 170.0, 112.0 ]
 }
@@ -577,7 +577,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -270.0, -110.0 ]
 }
@@ -589,7 +589,7 @@ tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 270.0, 110.0 ]
 }
@@ -1048,28 +1048,32 @@ graph_offset = Vector2( -63.1544, -17.1626 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [node name="Level" type="Node2D"]
+position = Vector2( 256, 150 )
 
 [node name="Stars" parent="." instance=ExtResource( 7 )]
 
 [node name="Level" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 
-[node name="Player" parent="Level" instance=ExtResource( 1 )]
-position = Vector2( 0, 36 )
+[node name="Node2D" type="Node2D" parent="Level"]
+position = Vector2( 256, 150 )
 
-[node name="Camera2D" type="Camera2D" parent="Level"]
+[node name="Player" parent="Level/Node2D" instance=ExtResource( 1 )]
+position = Vector2( 0, 34 )
+
+[node name="Camera2D" type="Camera2D" parent="Level/Node2D"]
 current = true
 
-[node name="Shades" type="KinematicBody2D" parent="Level" groups=["boss"]]
+[node name="Shades" type="KinematicBody2D" parent="Level/Node2D" groups=["boss"]]
 position = Vector2( 0, -98 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
 health = 90
 bossName = "Terra"
-deathText = NodePath("../../ClosingDialog/1 Terra")
+deathText = NodePath("../../../ClosingDialog/1 Terra")
 
-[node name="Particles2D" type="CPUParticles2D" parent="Level/Shades"]
+[node name="Particles2D" type="CPUParticles2D" parent="Level/Node2D/Shades"]
 local_coords = false
 emission_shape = 1
 emission_sphere_radius = 5.0
@@ -1079,18 +1083,18 @@ initial_velocity = 10.0
 scale_amount = 2.0
 color_ramp = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Level/Shades"]
+[node name="Sprite" type="Sprite" parent="Level/Node2D/Shades"]
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Shades"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Shades"]
 shape = SubResource( 21 )
 
-[node name="ColliderDamage" type="Area2D" parent="Level/Shades"]
+[node name="ColliderDamage" type="Area2D" parent="Level/Node2D/Shades"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Shades/ColliderDamage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Shades/ColliderDamage"]
 shape = SubResource( 28 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Shades"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Node2D/Shades"]
 anims/RESET = SubResource( 3 )
 anims/Scatter = SubResource( 4 )
 anims/Storm = SubResource( 5 )
@@ -1098,29 +1102,29 @@ anims/Sweep = SubResource( 6 )
 "anims/Sweep (start)" = SubResource( 18 )
 anims/TrackingTriangle = SubResource( 7 )
 
-[node name="AnimationTree" type="AnimationTree" parent="Level/Shades"]
+[node name="AnimationTree" type="AnimationTree" parent="Level/Node2D/Shades"]
 tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 17 )
 
-[node name="BulletSpawner" parent="Level/Shades" instance=ExtResource( 5 )]
+[node name="BulletSpawner" parent="Level/Node2D/Shades" instance=ExtResource( 5 )]
 bulletsPerSecond = 0.0
 
-[node name="BulletStorm" parent="Level/Shades" instance=ExtResource( 6 )]
+[node name="BulletStorm" parent="Level/Node2D/Shades" instance=ExtResource( 6 )]
 rotate_speed = 180
 shoot_timer_wait_time = 0.15
 spawn_point_count = 3
 
-[node name="Moon" parent="Level/Shades" instance=ExtResource( 10 )]
+[node name="Moon" parent="Level/Node2D/Shades" instance=ExtResource( 10 )]
 position = Vector2( 0, 20 )
 planet = NodePath("..")
 moon_name = "Luna"
 
-[node name="Sfx" type="AudioStreamPlayer" parent="Level/Shades"]
+[node name="Sfx" type="AudioStreamPlayer" parent="Level/Node2D/Shades"]
 stream = ExtResource( 15 )
 bus = "Sfx"
 
-[node name="Arena" parent="Level" instance=ExtResource( 2 )]
+[node name="Arena" parent="Level/Node2D" instance=ExtResource( 2 )]
 margin_left = -270.0
 margin_top = -170.0
 margin_right = 270.0
@@ -1135,160 +1139,160 @@ layer = 3
 follow_viewport_enable = true
 
 [node name="1 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 first_box = true
 text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
 nextBox = [ NodePath("../1b Orcus") ]
 
 [node name="1b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "I had hoped you would be better prepared."
 nextBox = [ NodePath("../2 Terra") ]
 
 [node name="2 Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "Nonsense, Orcus."
 color = "green"
 nextBox = [ NodePath("../2b Terra") ]
 
 [node name="2b Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "Did you believe Jupiter would let you take the souls of myself and the humans?"
 color = "green"
 nextBox = [ NodePath("../3 Orcus") ]
 
 [node name="3 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "He knew this was coming."
 nextBox = [ NodePath("../4 Terra") ]
 
 [node name="4 Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "We won't go gentle into the abyss."
 color = "green"
 nextBox = [ NodePath("../4b Terra") ]
 
 [node name="4b Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "[shake]We will scream your name in a unified curse.[/shake]"
 color = "green"
 nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "I do not blame you for doing so."
 nextBox = [ NodePath("../5b Orcus") ]
 
 [node name="5b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "Of your saviour, why do you think he has not come? Hatred? Fear?"
 nextBox = [ NodePath("../6 Terra") ]
 
 [node name="6 Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "Jupiter fears nothing."
 color = "green"
 nextBox = [ NodePath("../7 Orcus") ]
 
 [node name="7 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "And you do not rule out despair."
 nextBox = [ NodePath("../7b Orcus") ]
 
 [node name="7b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "I am surprised you have not fallen victim to it as well."
 nextBox = [ NodePath("../8 Terra") ]
 
 [node name="8 Terra" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "[shake]Enough! You will not claim another life![/shake]"
 color = "green"
-nextBox = [ NodePath("../../Level/Shades"), NodePath("../../Level/Player"), NodePath("../../BackgroundMusicPlayer") ]
+nextBox = [ NodePath("../../Level/Node2D/Shades"), NodePath("../../Level/Node2D/Player"), NodePath("../../BackgroundMusicPlayer") ]
 
 [node name="ClosingDialog" type="CanvasLayer" parent="."]
 layer = 3
 follow_viewport_enable = true
 
 [node name="1 Terra" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "The humans... They will look to the sky and see the face of their murderer..."
 color = "green"
 nextBox = [ NodePath("../1b Terra") ]
 
 [node name="1b Terra" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "They will revile you in your eternal kingdom..."
 color = "green"
 nextBox = [ NodePath("../2 Orcus") ]
 
 [node name="2 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "They already have. They're gone now, with just you left."
 nextBox = [ NodePath("../3 Terra") ]
 
 [node name="3 Terra" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -226.0
+margin_right = -86.0
+margin_bottom = -171.0
 text = "...And so the snow falls..."
 color = "green"
 nextBox = [ NodePath("../4 Orcus") ]
 
 [node name="4 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -98.0
+margin_right = -86.0
+margin_bottom = -43.0
 text = "...Here. I will hold your hand."
 nextBox = [ NodePath("../NextLevel") ]
 
@@ -1299,4 +1303,4 @@ level_name = "res://Jupiter.tscn"
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 11 )
 
-[connection signal="body_entered" from="Level/Shades/ColliderDamage" to="Level/Shades" method="_on_ColliderDamage_body_entered"]
+[connection signal="body_entered" from="Level/Node2D/Shades/ColliderDamage" to="Level/Node2D/Shades" method="_on_ColliderDamage_body_entered"]

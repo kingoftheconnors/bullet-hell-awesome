@@ -21,6 +21,7 @@ const TIME_BETWEEN_BULLETS = 0.15
 var timeSinceLastBullet : float = 0
 
 const ORBIT_TURNAROUND_TIME = 2000
+export(NodePath) var orbitting_body_path
 var orbitting_body : Node2D
 var orbitting_cur_direction : int = 1
 var orbitting_input_strength : float = 0
@@ -112,7 +113,7 @@ func _physics_process(delta):
 			timeSinceLastBullet += delta
 			if timeSinceLastBullet > TIME_BETWEEN_BULLETS:
 				var bullet = preload("res://Bullets/PlayerBullet.tscn").instance()
-				var mouse_position = get_global_mouse_position() - Vector2(ProjectSettings.get_setting("display/window/size/width"),ProjectSettings.get_setting("display/window/size/height"))/2
+				var mouse_position = get_global_mouse_position()
 				bullet.direction = (mouse_position - self.global_position).normalized()
 				get_parent().add_child(bullet)
 				bullet.global_position = self.global_position
@@ -148,6 +149,8 @@ func _on_HealTimer_timeout():
 		$HealTimer.start(HEAL_TIME_AFTER_FIRST_HEAL)
 
 func _ready():
+	if !orbitting_body_path.is_empty():
+		orbitting_body = get_node(orbitting_body_path)
 	for i in range(NUM_ASTEROIDS):
 		asteroids.add_asteroid()
 

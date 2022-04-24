@@ -563,18 +563,22 @@ tracks/1/keys = {
 [node name="Pluto" type="Node2D"]
 
 [node name="Stars" parent="." instance=ExtResource( 7 )]
+position = Vector2( 256, 156 )
 color_ramp = SubResource( 1 )
 
 [node name="Level" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 
-[node name="Player" parent="Level" instance=ExtResource( 6 )]
+[node name="Node2D" type="Node2D" parent="Level"]
+position = Vector2( 256, 150 )
+
+[node name="Player" parent="Level/Node2D" instance=ExtResource( 6 )]
 position = Vector2( 0, 36 )
 
-[node name="Camera2D" type="Camera2D" parent="Level"]
+[node name="Camera2D" type="Camera2D" parent="Level/Node2D"]
 current = true
 
-[node name="Pluto" type="KinematicBody2D" parent="Level" groups=["boss"]]
+[node name="Pluto" type="KinematicBody2D" parent="Level/Node2D" groups=["boss"]]
 position = Vector2( 0, -96 )
 collision_layer = 2
 collision_mask = 2
@@ -582,9 +586,9 @@ script = ExtResource( 18 )
 orbit_radius = 66
 health = 80
 bossName = "Pluto"
-deathText = NodePath("../../ClosingDialog/1 Orcus")
+deathText = NodePath("../../../ClosingDialog/1 Orcus")
 
-[node name="Particles2D" type="CPUParticles2D" parent="Level/Pluto"]
+[node name="Particles2D" type="CPUParticles2D" parent="Level/Node2D/Pluto"]
 local_coords = false
 emission_shape = 1
 emission_sphere_radius = 4.0
@@ -594,18 +598,18 @@ initial_velocity = 20.0
 scale_amount = 2.0
 color_ramp = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Level/Pluto"]
+[node name="Sprite" type="Sprite" parent="Level/Node2D/Pluto"]
 texture = ExtResource( 1 )
 
-[node name="ColliderDamage" type="Area2D" parent="Level/Pluto"]
+[node name="ColliderDamage" type="Area2D" parent="Level/Node2D/Pluto"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Pluto/ColliderDamage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Pluto/ColliderDamage"]
 shape = SubResource( 28 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Pluto"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Pluto"]
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Pluto"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Node2D/Pluto"]
 anims/Expand = SubResource( 19 )
 anims/Hourglass = SubResource( 6 )
 anims/RESET = SubResource( 5 )
@@ -615,28 +619,28 @@ anims/Spin = SubResource( 8 )
 anims/TrackingTriangle = SubResource( 10 )
 "anims/Wham-Bam-Slam Sam" = SubResource( 7 )
 
-[node name="AnimationTree" type="AnimationTree" parent="Level/Pluto"]
+[node name="AnimationTree" type="AnimationTree" parent="Level/Node2D/Pluto"]
 tree_root = SubResource( 30 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 29 )
 
-[node name="BulletSpawner" parent="Level/Pluto" instance=ExtResource( 4 )]
+[node name="BulletSpawner" parent="Level/Node2D/Pluto" instance=ExtResource( 4 )]
 bulletsPerSecond = 0.0
 v_angle_step = 15.0
 
-[node name="BulletStorm" parent="Level/Pluto" instance=ExtResource( 3 )]
+[node name="BulletStorm" parent="Level/Node2D/Pluto" instance=ExtResource( 3 )]
 rotate_speed = 180
 shoot_timer_wait_time = 0.05
 spawn_point_count = 2
 radius = 5
 
-[node name="Moon" parent="Level/Pluto" instance=ExtResource( 5 )]
+[node name="Moon" parent="Level/Node2D/Pluto" instance=ExtResource( 5 )]
 position = Vector2( 0, 20 )
 speed = 120
 planet = NodePath("..")
 moon_name = "Charon"
 
-[node name="Arena" parent="Level" instance=ExtResource( 2 )]
+[node name="Arena" parent="Level/Node2D" instance=ExtResource( 2 )]
 margin_left = -150.0
 margin_top = -150.0
 margin_right = 150.0
@@ -651,104 +655,104 @@ layer = 3
 follow_viewport_enable = true
 
 [node name="1 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 first_box = true
 text = "Pluto, the only holdout."
 nextBox = [ NodePath("../1b Orcus") ]
 
 [node name="1b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "There is nothing left for you here."
 nextBox = [ NodePath("../1c Orcus") ]
 
 [node name="1c Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "Please do not make this more difficult than it needs to be."
 nextBox = [ NodePath("../2 Pluto") ]
 
 [node name="2 Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "Why should I do what you say? After you've taken everything."
 color = "#00BBFF"
 nextBox = [ NodePath("../2b Pluto") ]
 
 [node name="2b Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "Everything, everything except my riches and my life!"
 color = "#00BBFF"
 nextBox = [ NodePath("../3 Orcus") ]
 
 [node name="3 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "It was predestined."
 nextBox = [ NodePath("../3b Orcus") ]
 
 [node name="3b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "I inherit the universe, and this was the day of my reckoning."
 nextBox = [ NodePath("../4 Pluto") ]
 
 [node name="4 Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "And what if I kill you?"
 color = "#00BBFF"
 nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "You cannot. I will always return."
 nextBox = [ NodePath("../6 Pluto") ]
 
 [node name="6 Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "Then I'll simply entomb you in molten gold."
 color = "#00BBFF"
 nextBox = [ NodePath("../6b Pluto") ]
 
 [node name="6b Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "And then replace your eyes with rubies."
 color = "#00BBFF"
 nextBox = [ NodePath("../6c Pluto") ]
 
 [node name="6c Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "A nice statue in my halls, perhaps?"
 color = "#00BBFF"
 nextBox = [ NodePath("../Pause") ]
@@ -764,73 +768,72 @@ nextBox = [ NodePath("../7 Orcus") ]
 auto_advance_time = 1.0
 
 [node name="7 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "You are twisted."
 nextBox = [ NodePath("../8 Pluto") ]
 
 [node name="8 Pluto" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "And you are a thief."
 color = "#00BBFF"
 nextBox = [ NodePath("../9 Orcus") ]
 
 [node name="9 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "No. I am entropy."
 nextBox = [ NodePath("../9b Orcus") ]
 
 [node name="9b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "Take pride that you have made the primordial end feel disgust."
 nextBox = [ NodePath("../9c Orcus") ]
 
 [node name="9c Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "[b]Stain[/b]"
-nextBox = [ NodePath("../../Level/Player"), NodePath("../../Level/Pluto"), NodePath("../../BackgroundMusicPlayer") ]
+nextBox = [ NodePath("../../Level/Node2D/Player"), NodePath("../../Level/Node2D/Pluto"), NodePath("../../BackgroundMusicPlayer") ]
 
 [node name="ClosingDialog" type="CanvasLayer" parent="."]
 layer = 3
 follow_viewport_enable = true
 
 [node name="1 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
-first_box = true
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "You are dead. No big surprise"
 nextBox = [ NodePath("../2 Pluto") ]
 
 [node name="2 Pluto" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -376.0
-margin_right = -342.0
-margin_bottom = -327.0
+margin_left = 86.0
+margin_top = -228.0
+margin_right = -86.0
+margin_bottom = -173.0
 text = "Welp"
 color = "#00BBFF"
 nextBox = [ NodePath("../3 Orcus") ]
 
 [node name="3 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
-margin_left = -170.0
-margin_top = -248.0
-margin_right = -342.0
-margin_bottom = -199.0
+margin_left = 86.0
+margin_top = -92.0
+margin_right = -86.0
+margin_bottom = -37.0
 text = "Die"
 nextBox = [ NodePath("") ]
 
@@ -840,4 +843,4 @@ script = ExtResource( 17 )
 [node name="BackgroundMusicPlayer" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[connection signal="body_entered" from="Level/Pluto/ColliderDamage" to="Level/Pluto" method="_on_ColliderDamage_body_entered"]
+[connection signal="body_entered" from="Level/Node2D/Pluto/ColliderDamage" to="Level/Node2D/Pluto" method="_on_ColliderDamage_body_entered"]
