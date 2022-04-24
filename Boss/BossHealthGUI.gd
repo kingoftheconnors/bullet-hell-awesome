@@ -20,6 +20,9 @@ func damage() -> bool:
 		return true
 	return false
 
+func get_health() -> int:
+	return progress.get_health()
+
 var moons : Dictionary = {}
 func boss_death():
 	$DeathLight/BossKillAnimator.play("Die")

@@ -41,6 +41,8 @@ func damage() -> bool:
 			BattleMusic.play_ambience()
 			get_tree().get_nodes_in_group("player")[0].stop()
 			get_node(deathText).start()
+		else:
+			emit_signal("damage", BossHealthGui.get_health())
 	return true
 
 func _on_ColliderDamage_body_entered(body):
@@ -49,3 +51,4 @@ func _on_ColliderDamage_body_entered(body):
 
 signal orbitting
 signal dead
+signal damage

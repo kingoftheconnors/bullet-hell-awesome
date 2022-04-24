@@ -16,7 +16,7 @@ const HEAL_TIME_AFTER_FIRST_HEAL = 0.5
 const ORBIT_TURNAROUND_TIME = 550
 export(NodePath) var planet
 onready var orbitting_body : Node2D = get_node(planet)
-onready var orbit_radius = self.position.length()
+export(float) var orbit_radius
 const ORBIT_RADIUS_SPEED = 15
 
 export(int) var health = 50
@@ -24,6 +24,7 @@ export(String) var moon_name = "Moon"
 
 func _ready():
 	BossHealthGui.initialize_moon(moon_name, health)
+	orbit_radius = self.position.length()
 
 onready var tween = $Tween
 func start_orbit(orbitting_body):

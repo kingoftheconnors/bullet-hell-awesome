@@ -31,9 +31,10 @@ func start(skip = false):
 	active = true
 	if auto_advance_time > 0:
 		$Timer.start(auto_advance_time)
+		$VBoxContainer/TextureRect.visible = false
 
 func _input(event):
-	if active:
+	if active and auto_advance_time == 0:
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 			if animator.current_animation_position < animator.current_animation_length:
 				if text.length() > 0:
