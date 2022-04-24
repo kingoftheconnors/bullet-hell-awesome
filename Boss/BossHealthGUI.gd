@@ -63,3 +63,5 @@ func heal_moon(moon : Node2D):
 
 func new_level():
 	$DeathLight/BossKillAnimator.play("NewLevel")
+func new_level_from_menu():
+	$DeathLight/BossKillAnimator.play("NewLevel (to black and back)")
