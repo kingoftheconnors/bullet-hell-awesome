@@ -83,7 +83,7 @@ func _physics_process(delta):
 				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED * -Input.get_action_strength("ui_up"))
 			else:
 				# Force move towards planet
-				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED)
+				move_and_slide((orbitting_body.position - self.position).normalized() * SPEED*2)
 			# Moving along orbit
 			var current_angle = self.global_position.angle_to_point(orbitting_body.global_position)
 			# Player left/right
@@ -145,7 +145,7 @@ func _input(event):
 			timeSinceLastBullet = 0
 
 func _on_HealTimer_timeout():
-	if !dead and asteroids.get_num_asteroids() < NUM_ASTEROIDS:
+	if !dead and is_active and asteroids.get_num_asteroids() < NUM_ASTEROIDS:
 		asteroids.add_asteroid()
 		$AsteroidHealingPlayer.play()
 		$HealTimer.start(HEAL_TIME_AFTER_FIRST_HEAL)

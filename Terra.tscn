@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Bullets/BulletStorm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stars.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Textbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sfx/Boss_kill_sfx.wav" type="AudioStream" id=9]
 [ext_resource path="res://Boss/Moon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=11]
 [ext_resource path="res://Levels/NextLevel.gd" type="Script" id=12]
@@ -1123,6 +1124,9 @@ moon_name = "Luna"
 [node name="Sfx" type="AudioStreamPlayer" parent="Level/Node2D/Shades"]
 stream = ExtResource( 15 )
 bus = "Sfx"
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="Level/Node2D/Shades"]
+stream = ExtResource( 9 )
 
 [node name="Arena" parent="Level/Node2D" instance=ExtResource( 2 )]
 margin_left = -270.0

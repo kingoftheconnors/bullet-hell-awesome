@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Boss/Pluto.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Arena.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=9]
 [ext_resource path="res://font/PressStart2P-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://sfx/Player Death SFX.wav" type="AudioStream" id=11]
+[ext_resource path="res://sfx/Boss_kill_sfx.wav" type="AudioStream" id=12]
 [ext_resource path="res://Levels/NextLevel.gd" type="Script" id=17]
 [ext_resource path="res://Shades.gd" type="Script" id=18]
 
@@ -1060,6 +1061,9 @@ position = Vector2( 0, 20 )
 speed = 120
 planet = NodePath("..")
 moon_name = "Charon"
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="Level/Node2D/Pluto"]
+stream = ExtResource( 12 )
 
 [node name="Arena" parent="Level/Node2D" instance=ExtResource( 2 )]
 margin_left = -100.0

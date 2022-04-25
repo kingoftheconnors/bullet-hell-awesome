@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Boss/Moon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bullets/BulletSpawner.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Boss/JupiterEcho.gd" type="Script" id=8]
 [ext_resource path="res://Levels/AudioStreamPlayer.gd" type="Script" id=9]
 [ext_resource path="res://Levels/NextLevel.gd" type="Script" id=10]
+[ext_resource path="res://sfx/Boss_kill_sfx.wav" type="AudioStream" id=11]
 [ext_resource path="res://Shades.gd" type="Script" id=13]
 [ext_resource path="res://Boss/Jupiter.png" type="Texture" id=17]
 
@@ -17,16 +18,16 @@
 offsets = PoolRealArray( 0, 0.33, 0.66, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 0.976471, 0.741176, 1, 0, 0, 0, 0 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="CircleShape2D" id=28]
+[sub_resource type="CircleShape2D" id=3]
 radius = 10.5
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 radius = 12.0
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=5]
 resource_name = "Expand"
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Arena:left")
@@ -105,7 +106,7 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.001
 step = 0.243
 tracks/0/type = "value"
@@ -169,8 +170,7 @@ tracks/4/keys = {
 "values": [ 150.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Shrink"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Arena:left")
 tracks/0/interp = 1
@@ -220,8 +220,7 @@ tracks/3/keys = {
 "values": [ 150.0, 50.0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Spin"
+[sub_resource type="Animation" id=9]
 length = 4.0
 step = 0.243
 tracks/0/type = "value"
@@ -248,8 +247,7 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Sweep (start)"
+[sub_resource type="Animation" id=10]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -374,7 +372,7 @@ tracks/5/keys = {
 "values": [ 270.0, 110.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 6.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -523,9 +521,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Wham-Bam-Slam Sam"
-length = 5.0
+[sub_resource type="Animation" id=12]
+length = 10.0
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -534,10 +531,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 10, 1, 10, 1, 10, 1, 10, 1, 10 ),
+"times": PoolRealArray( 0, 1, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 3,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -96, 0 ), Vector2( 0, 0 ), Vector2( 96, 0 ), Vector2( 0, 0 ), Vector2( 0, -96 ), Vector2( 0, 0 ), Vector2( 0, 96 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -546,7 +543,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -557,29 +554,29 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Expand"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Hourglass"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "RESET"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Shrink"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Spin"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Wham-Bam-Slam Sam"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
 auto_advance = true
 
@@ -587,36 +584,36 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=12]
-states/Expand/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachine" id=25]
+states/Expand/node = SubResource( 13 )
 states/Expand/position = Vector2( 795, 49 )
-states/Hourglass/node = SubResource( 11 )
+states/Hourglass/node = SubResource( 14 )
 states/Hourglass/position = Vector2( 477, 104 )
-states/RESET/node = SubResource( 23 )
+states/RESET/node = SubResource( 15 )
 states/RESET/position = Vector2( 225, 73 )
-states/Shrink/node = SubResource( 14 )
+states/Shrink/node = SubResource( 16 )
 states/Shrink/position = Vector2( 531, 204 )
-states/Spin/node = SubResource( 15 )
+states/Spin/node = SubResource( 17 )
 states/Spin/position = Vector2( 720, 137 )
-"states/Wham-Bam-Slam Sam/node" = SubResource( 25 )
+"states/Wham-Bam-Slam Sam/node" = SubResource( 18 )
 "states/Wham-Bam-Slam Sam/position" = Vector2( 585, 18.936 )
-transitions = [ "Hourglass", "Shrink", SubResource( 16 ), "Shrink", "Spin", SubResource( 17 ), "Spin", "Expand", SubResource( 21 ), "RESET", "Hourglass", SubResource( 24 ), "Expand", "Wham-Bam-Slam Sam", SubResource( 26 ), "Wham-Bam-Slam Sam", "Hourglass", SubResource( 27 ) ]
+transitions = [ "Hourglass", "Shrink", SubResource( 19 ), "Shrink", "Spin", SubResource( 20 ), "Spin", "Expand", SubResource( 21 ), "RESET", "Hourglass", SubResource( 22 ), "Expand", "Wham-Bam-Slam Sam", SubResource( 23 ), "Wham-Bam-Slam Sam", "Hourglass", SubResource( 24 ) ]
 start_node = "RESET"
 graph_offset = Vector2( 158.013, 3.08195 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
 [node name="Level" type="Node2D"]
 
@@ -670,7 +667,7 @@ direction = Vector2( 0, 0 )
 gravity = Vector2( 0, 0 )
 initial_velocity = 20.0
 scale_amount = 2.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Level/Node2D/Jupiter"]
 texture = ExtResource( 17 )
@@ -678,25 +675,25 @@ texture = ExtResource( 17 )
 [node name="ColliderDamage" type="Area2D" parent="Level/Node2D/Jupiter"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Jupiter/ColliderDamage"]
-shape = SubResource( 28 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Node2D/Jupiter"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Node2D/Jupiter"]
-anims/Expand = SubResource( 19 )
+anims/Expand = SubResource( 5 )
 anims/Hourglass = SubResource( 6 )
-anims/RESET = SubResource( 5 )
-anims/Shrink = SubResource( 4 )
-anims/Spin = SubResource( 8 )
-"anims/Sweep (start)" = SubResource( 9 )
-anims/TrackingTriangle = SubResource( 10 )
-"anims/Wham-Bam-Slam Sam" = SubResource( 7 )
+anims/RESET = SubResource( 7 )
+anims/Shrink = SubResource( 8 )
+anims/Spin = SubResource( 9 )
+"anims/Sweep (start)" = SubResource( 10 )
+anims/TrackingTriangle = SubResource( 11 )
+"anims/Wham-Bam-Slam Sam" = SubResource( 12 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Level/Node2D/Jupiter"]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 25 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 13 )
+parameters/playback = SubResource( 26 )
 
 [node name="BulletSpawner" parent="Level/Node2D/Jupiter" instance=ExtResource( 2 )]
 bulletsPerSecond = 0.0
@@ -728,6 +725,9 @@ moon_name = "Ganymede"
 position = Vector2( 0, 66 )
 planet = NodePath("..")
 moon_name = "Callisto"
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="Level/Node2D/Jupiter"]
+stream = ExtResource( 11 )
 
 [node name="Arena" parent="Level/Node2D" instance=ExtResource( 6 )]
 margin_left = -150.0
