@@ -992,7 +992,7 @@ follow_viewport_enable = true
 position = Vector2( 256, 150 )
 
 [node name="Player" parent="Level/Node2D" instance=ExtResource( 6 )]
-position = Vector2( 0, 36 )
+position = Vector2( 0, 26 )
 
 [node name="Camera2D" type="Camera2D" parent="Level/Node2D"]
 current = true
@@ -1098,9 +1098,8 @@ nextBox = [ NodePath("../1c Orcus") ]
 
 [node name="1c Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "Please do not make this more difficult than it needs to be."
 nextBox = [ NodePath("../2 Pluto") ]
 
@@ -1132,9 +1131,9 @@ nextBox = [ NodePath("../3b Orcus") ]
 
 [node name="3b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -61.0
 text = "I inherit the universe, and this was the day of my reckoning."
 nextBox = [ NodePath("../4 Pluto") ]
 
@@ -1149,9 +1148,8 @@ nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "You cannot. I will always return."
 nextBox = [ NodePath("../6 Pluto") ]
 
@@ -1219,17 +1217,16 @@ nextBox = [ NodePath("../9b Orcus") ]
 
 [node name="9b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -61.0
 text = "Take pride that you have made the primordial end feel disgust."
 nextBox = [ NodePath("../9c Orcus") ]
 
 [node name="9c Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "[b]Stain[/b]"
 nextBox = [ NodePath("../../Level/Node2D/Player"), NodePath("../../Level/Node2D/Pluto"), NodePath("../../BackgroundMusicPlayer") ]
 
@@ -1296,9 +1293,9 @@ nextBox = [ NodePath("../2 Orcus") ]
 
 [node name="2 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -124.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -69.0
 text = "You are not willing to put up more of a fight? I am surprised."
 nextBox = [ NodePath("../3 Pluto") ]
 
@@ -1383,17 +1380,17 @@ nextBox = [ NodePath("../8 Orcus") ]
 
 [node name="8 Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -61.0
 text = "It is not compulsion, Pluto. This was always going to happen."
 nextBox = [ NodePath("../8b Orcus") ]
 
 [node name="8b Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -61.0
 text = "The universe was fated to be mine, since the moment I drew breath."
 nextBox = [ NodePath("../9 Pluto") ]
 
@@ -1444,9 +1441,9 @@ nextBox = [ NodePath("../11b Orcus") ]
 
 [node name="11b Orcus" parent="ClosingDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -53.0
 text = "Now I return to my new kingdom, leaving these wastes to rot."
 nextBox = [ NodePath("../NextLevel") ]
 

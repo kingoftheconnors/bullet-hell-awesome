@@ -3,6 +3,7 @@
 [ext_resource path="res://font/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
+extra_spacing_top = 2
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -21,13 +22,13 @@ alignment = 1
 margin_left = 68.0
 margin_right = 444.0
 margin_bottom = 300.0
-custom_constants/separation = 10
+custom_constants/separation = 14
 alignment = 1
 
 [node name="Label2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
-margin_top = 42.0
+margin_top = 33.0
 margin_right = 376.0
-margin_bottom = 62.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 300, 20 )
 size_flags_horizontal = 3
 custom_colors/default_color = Color( 1, 1, 1, 1 )
@@ -38,10 +39,10 @@ text = "Congratulations"
 scroll_active = false
 
 [node name="Label4" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
-margin_top = 72.0
+margin_top = 67.0
 margin_right = 376.0
 margin_bottom = 127.0
-rect_min_size = Vector2( 300, 55 )
+rect_min_size = Vector2( 300, 60 )
 size_flags_horizontal = 3
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 1 )
@@ -51,9 +52,9 @@ text = "This game was made for the third annual BULLET HELL JAM"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 137.0
+margin_top = 141.0
 margin_right = 376.0
-margin_bottom = 213.0
+margin_bottom = 217.0
 custom_constants/separation = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -144,9 +145,9 @@ align = 2
 valign = 1
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 223.0
+margin_top = 231.0
 margin_right = 376.0
-margin_bottom = 258.0
+margin_bottom = 266.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "

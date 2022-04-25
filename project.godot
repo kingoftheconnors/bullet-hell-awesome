@@ -10,10 +10,11 @@ config_version=4
 
 [application]
 
-config/name="bullet-hell-awesome"
+config/name="Cosmic Periastron"
+config/description="The end of days is nigh. Orcus, the god of death, comes to take all things unto himself."
 run/main_scene="res://MainMenu/MainMenu.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://Player/Orcus.png"
 
 [autoload]
 

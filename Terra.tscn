@@ -1060,7 +1060,7 @@ follow_viewport_enable = true
 position = Vector2( 256, 150 )
 
 [node name="Player" parent="Level/Node2D" instance=ExtResource( 1 )]
-position = Vector2( 0, 34 )
+position = Vector2( 0, 26 )
 
 [node name="Camera2D" type="Camera2D" parent="Level/Node2D"]
 current = true
@@ -1144,18 +1144,18 @@ follow_viewport_enable = true
 
 [node name="1 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -61.0
 first_box = true
 text = "Terra, I have seen you ponder the primordial hourglass of my reckoning."
 nextBox = [ NodePath("../1b Orcus") ]
 
 [node name="1b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -53.0
 text = "I had hoped you would be better prepared."
 nextBox = [ NodePath("../2 Terra") ]
 
@@ -1179,9 +1179,8 @@ nextBox = [ NodePath("../3 Orcus") ]
 
 [node name="3 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -45.0
 text = "He knew this was coming."
 nextBox = [ NodePath("../4 Terra") ]
 
@@ -1204,18 +1203,17 @@ color = "green"
 nextBox = [ NodePath("../5 Orcus") ]
 
 [node name="5 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
-margin_left = 86.0
-margin_top = -98.0
-margin_right = -86.0
-margin_bottom = -43.0
+margin_left = 88.0
+margin_right = -84.0
+margin_bottom = -45.0
 text = "I do not blame you for doing so."
 nextBox = [ NodePath("../5b Orcus") ]
 
 [node name="5b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -61.0
 text = "Of your saviour, why do you think he has not come? Hatred? Fear?"
 nextBox = [ NodePath("../6 Terra") ]
 
@@ -1230,17 +1228,16 @@ nextBox = [ NodePath("../7 Orcus") ]
 
 [node name="7 Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -45.0
 text = "And you do not rule out despair."
 nextBox = [ NodePath("../7b Orcus") ]
 
 [node name="7b Orcus" parent="OpeningDialog" instance=ExtResource( 8 )]
 margin_left = 86.0
-margin_top = -98.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -43.0
+margin_bottom = -53.0
 text = "I am surprised you have not fallen victim to it as well."
 nextBox = [ NodePath("../8 Terra") ]
 

@@ -780,17 +780,16 @@ nextBox = [ NodePath("../4b Orcus") ]
 
 [node name="4b Orcus" parent="OpeningDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "Venus and Mars went of their own volition."
 nextBox = [ NodePath("../4c Orcus") ]
 
 [node name="4c Orcus" parent="OpeningDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -53.0
 text = "The humans are gone and there is nothing left for them."
 nextBox = [ NodePath("../5 Jupiter") ]
 
@@ -805,25 +804,23 @@ nextBox = [ NodePath("../6 Orcus") ]
 
 [node name="6 Orcus" parent="OpeningDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "Do not look so defeated, Jove."
 nextBox = [ NodePath("../6b Orcus") ]
 
 [node name="6b Orcus" parent="OpeningDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -116.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -61.0
 text = "You have faced insurmountable odds with fury and conviction."
 nextBox = [ NodePath("../6c Orcus") ]
 
 [node name="6c Orcus" parent="OpeningDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -45.0
 text = "Come, we will fight one last time."
 nextBox = [ NodePath("../7 Jupiter") ]
 
@@ -868,9 +865,9 @@ nextBox = [ NodePath("../2 Orcus") ]
 
 [node name="2 Orcus" parent="ClosingDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -53.0
 text = "Before the veil flutters... Were you holding back?"
 nextBox = [ NodePath("../3 Jupiter") ]
 
@@ -911,9 +908,9 @@ nextBox = [ NodePath("../4b Orcus") ]
 
 [node name="4b Orcus" parent="ClosingDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -53.0
 text = "Perhaps being the subject for a change could freshen things?"
 nextBox = [ NodePath("../5 Jupiter") ]
 
@@ -928,9 +925,9 @@ nextBox = [ NodePath("../6 Orcus") ]
 
 [node name="6 Orcus" parent="ClosingDialog" instance=ExtResource( 7 )]
 margin_left = 86.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -86.0
-margin_bottom = -37.0
+margin_bottom = -53.0
 text = "Same to you, Jupiter. Goodbye, for now..."
 nextBox = [ NodePath("../NextLevel") ]
 
